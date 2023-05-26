@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h3>Lista de Utilizadores</h3>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Tipo Utilizador</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="u:${listUtilizadores}">
+        <td th:text="${u.idUtilizador}"></td>
+        <td th:text="${u.username}"></td>
+        <td th:text="${u.getTipoUtilizador()}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
