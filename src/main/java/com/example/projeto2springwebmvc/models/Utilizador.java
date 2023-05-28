@@ -32,6 +32,7 @@ public class Utilizador implements Serializable {
     @Size(min = 4, max = 40)
     /*@UniqueElements*/
     /*@DecimalMin("100")*/
+    /*@Column(unique = true)*/
     private String username;
     private String password;
     private Integer numeroCc;
