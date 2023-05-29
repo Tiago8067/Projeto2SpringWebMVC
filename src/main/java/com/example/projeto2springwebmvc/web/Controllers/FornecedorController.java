@@ -1,4 +1,4 @@
-package com.example.projeto2springwebmvc.web;
+package com.example.projeto2springwebmvc.web.Controllers;
 
 import com.example.projeto2springwebmvc.repositories.FornecedorRepository;
 import lombok.AllArgsConstructor;

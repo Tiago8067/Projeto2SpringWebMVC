@@ -1,10 +1,11 @@
-package com.example.projeto2springwebmvc.web;
+package com.example.projeto2springwebmvc.web.Controllers;
 
+import com.example.projeto2springwebmvc.Services.UtilizadorService;
 import com.example.projeto2springwebmvc.models.Utilizador;
 import com.example.projeto2springwebmvc.repositories.UtilizadorRepository;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.boot.Banner;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,33 @@ import java.util.List;
 @AllArgsConstructor
 public class UtilizadorController {
     private UtilizadorRepository utilizadorRepository;
+    @Autowired
+    private UtilizadorService utilizadorService;
+
+    @GetMapping(path = "/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping(path = "/registrar")
+    public String registrar() {
+        return "registro";
+    }
+
+    @GetMapping(path = "/homePage")
+    public String homePage() {
+        return "homePage";
+    }
+
+    /*@GetMapping(path = "/doacoes")
+    public String doacoes() {
+        return "listDoacoes";
+    }*/
+
+    /*@GetMapping(path = "/addDoacao")
+    public String addDoacao() {
+        return "addDoacao";
+    }*/
 
     @GetMapping(path = "/index")
     public String utilizadores(Model model,

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="homePage"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Doações</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="style/doacao.css">-->
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">
+                            Lista das Tuas Doações
+                            <a style="margin-right: 10%;float: right;" class="btn btn-primary"
+                               th:href="@{/doacoes/addDoacao}">Adicionar Nova Doação</a>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="get" th:action="@{doacoes}">
+                            <label>Key word</label>
+                            <input type="text" name="keyword" th:value="${keyword}">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                        <!--table-bordered-->
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Categoria de Roupa</th>
+                                <th>Tipo de Roupa</th>
+                                <th>Tamanho de Roupa</th>
+                                <th>Quantidade</th>
+                                <th>Data da Doação</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr th:each="d : ${doacaoList}" >
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a class="btn btn-danger">
+                                        Delete
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-success">
+                                        Edit
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <ul class="nav nav-pills">
+                            <!--<li th:each="page,status:${pages}">
+                                <a th:class="${status.index==currentPage?'btn btn-primary ms-1' : 'btn btn-outline-primary ms-1'}"
+                                   th:text="${status.index}"
+                                   th:href="@{index(page=${status.index}, keyword=${keyword})}"
+                                ></a>
+                            </li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

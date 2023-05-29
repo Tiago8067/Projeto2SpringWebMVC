@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
@@ -7,20 +7,25 @@
 </head>
 <body>
 
-<div class="container align-content-center ">
-    <div class="row border-bottom border-danger rounded-5 p-3 bg-white shadow box-area">
-        <div class="col align-content-center">
-            <img src="../images/logo.png">
+<div class="container min-vh-100 d-flex justify-content-center align-items-center">
+    <form method="get" action="#">
+        <div class="row border-bottom border-danger rounded-5 p-3 bg-white shadow box-area">
+            <div class="text-center">
+                <img src="images/logo.png" class="img-fluid" height="109" width="222" alt="logo">
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="username" placeholder="Enter with your Username">
+                <label for="username">Username</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="password" placeholder="Enter with your Password">
+                <label for="password">Password</label>
+            </div>
+            <div class="form-floating mt-3 text-center">
+                <button class="btn btn-primary" type="submit">Entrar</button>
+            </div>
         </div>
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
-        </div>
-        <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
-        </div>
-    </div>
+    </form>
 </div>
 
 </body>
