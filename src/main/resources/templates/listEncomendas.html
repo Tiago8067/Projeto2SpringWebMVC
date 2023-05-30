@@ -6,7 +6,7 @@
 >
 <head>
     <meta charset="UTF-8">
-    <title>Lista Doações</title>
+    <title>Lista Encomendas</title>
     <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
     <!--<link rel="stylesheet" href="style/doacao.css">-->
 </head>
@@ -20,13 +20,13 @@
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">
-                            Lista das Tuas Doações
+                            Lista das Tuas Encomendas
                             <a style="margin-right: 10%;float: right;" class="btn btn-primary"
-                               th:href="@{/doacoes/addDoacao}">Adicionar Nova Doação</a>
+                               th:href="@{/encomendas/addEncomenda}">Adicionar Nova Encomenda</a>
                         </h5>
                     </div>
                     <div class="card-body">
-                        <form method="get" th:action="@{doacoes}">
+                        <form method="get" th:action="@{encomendas}">
                             <label for="keyword">Key word</label>
                             <input id="keyword" type="text" name="keyword" th:value="${keyword}">
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -35,20 +35,25 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <!--<th>Categoria de Roupa</th>-->
                                 <th>Tipo de Roupa</th>
                                 <th>Tamanho de Roupa</th>
                                 <th>Quantidade</th>
-                                <th>Data da Doação</th>
+                                <th>Data da Pedido</th>
+                                <th>Fornecedor</th>
+                                <th>Data da Entrega</th>
+                                <th>Estado da Encomenda</th>
                             </tr>
                             </thead>
 
                             <tbody>
-                            <tr th:each="d : ${roupasDoadas}" >
-                                <td th:text="${d.tipoRoupa}"></td>
-                                <td th:text="${d.tamanhoRoupa}"></td>
-                                <td th:text="${d.quantidade}"></td>
+                            <tr th:each="e : ${roupasEncomendadas}" >
+                                <td th:text="${e.tipoRoupa}"></td>
+                                <td th:text="${e.tamanhoRoupa}"></td>
+                                <td th:text="${e.quantidade}"></td>
                                 <td></td>
+                                <td th:text="${e.usernameFonecedor}"></td>
+                                <td></td>
+                                <td th:text="${e.estado}"></td>
                                 <td>
                                     <a class="btn btn-danger">
                                         Delete

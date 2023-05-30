@@ -7,8 +7,9 @@
     <title>HomePage</title>
     <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
     <script src="webjars/bootstrap/5.2.3/js/bootstrap.bundle.js"></script>
+    <!--<link rel="stylesheet" href="style/estilo.css">-->
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
 <!--fixed-top-->
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
@@ -25,18 +26,7 @@
                     <a class="nav-link" th:href="@{/doacoes}">Doações</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Encomendas</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Utilizadores
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Admin</a></li>
-                        <li><a class="dropdown-item" href="#">Funcionario</a></li>
-                        <li><a class="dropdown-item" href="#">Cliente</a></li>
-                    </ul>
+                    <a class="nav-link" th:href="@{/encomendas}">Encomendas</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
@@ -46,6 +36,7 @@
                         [Username]
                     </a>
                     <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Meu Perfil</a></li>
                         <li><a class="dropdown-item" href="#">Logout</a></li>
                     </ul>
                 </li>
@@ -58,25 +49,13 @@
 
 </section>
 
-<!--<nav class="navbar fixed-bottom navbar-expand-sm bg-light navbar-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="images/logo.png" alt="logo">
-        </a>
-        <div class="collapse navbar-collapse" id="navbarNavBottom">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a></a>
-                </li>
-            </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a>@DeliveryDonation</a>
-                </li>
-            </ul>
-        </div>
+<footer class="mt-auto bg-light text-center text-lg-start">
+    <!--style="background-color: rgba(0,0,0,0.2);"-->
+    <div class="text-center p-3">
+        © 2023 Copyright:
+        <a class="text-dark" th:href="@{/homePage}" style="text-decoration: none">Delevery Donation</a>
     </div>
-</nav>-->
+</footer>
 
 </body>
 </html>

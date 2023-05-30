@@ -1,6 +1,7 @@
 package com.example.projeto2springwebmvc.Services;
 
 import com.example.projeto2springwebmvc.models.Doacao;
+import com.example.projeto2springwebmvc.modelsHelp.LinhaDoacoes;
 import com.example.projeto2springwebmvc.repositories.DoacaoRepository;
 import com.example.projeto2springwebmvc.util.ConnectionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class DoacaoService {
         return doacaoRepository.findAll();
     }
 
-    /*public List<Doacao> doacaoListById(){
+    public List<LinhaDoacoes> doacoesDasRoupas(){
         ConnectionUtil connectionUtil = new ConnectionUtil();
         Connection conn = connectionUtil.criarConexao();
 
@@ -46,5 +47,5 @@ public class DoacaoService {
             System.out.println("ERRO: " + e.getMessage());
         }
         return linhaDoacoesList;
-    }*/
+    }
 }

@@ -2,6 +2,7 @@ package com.example.projeto2springwebmvc.web.Controllers;
 
 import com.example.projeto2springwebmvc.Services.DoacaoService;
 import com.example.projeto2springwebmvc.models.Doacao;
+import com.example.projeto2springwebmvc.modelsHelp.LinhaDoacoes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,14 +19,15 @@ public class DoacaoController {
 
     @GetMapping()
     public String mostraDoacaoList(Model model) {
-        List<Doacao> doacaoList = doacaoService.doacaoList();
-        model.addAttribute("doacaoList", doacaoList);
+        //List<Doacao> doacaoList = doacaoService.doacaoList();
+        List<LinhaDoacoes> roupasDoadas = doacaoService.doacoesDasRoupas();
+        //model.addAttribute("doacaoList", doacaoList);
+        model.addAttribute("roupasDoadas", roupasDoadas);
         return "listDoacoes";
     }
 
     @GetMapping("/addDoacao")
-    public String addDoacao(Model model) {
-        model.addAttribute("doacao", new Doacao());
+    public String addDoacao() {
         return "addDoacao";
     }
 }
