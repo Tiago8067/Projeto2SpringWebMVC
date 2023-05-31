@@ -16,9 +16,12 @@ public class Encomenda implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idencomenda")
     private Integer idEncomenda;
+    @Column(name = "datadepedido")
     private Instant dataDePedido;
     @Enumerated(EnumType.STRING)
+    @Column(name = "estadoencomenda")
     private EstadoEncomenda estadoEncomenda;
     @ManyToOne
     @JoinColumn(name = "fornecedor_id", referencedColumnName = "idFornecedor")

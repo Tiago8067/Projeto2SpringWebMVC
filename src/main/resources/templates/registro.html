@@ -8,69 +8,85 @@
 <body>
 
 <div class="container min-vh-100 d-flex justify-content-center align-items-center">
-    <form class="row g-3" method="post" action="#">
+    <form class="row g-3" th:action="@{/registrar}" method="post" th:object="${utilizador}">
         <div class="row border-bottom border-danger rounded-5 p-3 bg-white shadow box-area">
             <div class="text-center">
                 <img src="images/logo.png" class="img-fluid" height="109" width="222" alt="logo">
             </div>
             <div class="form-floating col-4 mb-3">
-                <input type="text" class="form-control" id="username" placeholder="Enter with your Username">
+                <input type="text" class="form-control" id="username" placeholder="Enter with your Username"
+                        th:field="*{username}" required minlength="4" maxlength="30">
                 <label for="username">Username</label>
             </div>
             <div class="form-floating col-8 mb-3">
-                <input type="email" class="form-control" id="email" placeholder="Enter with your Email">
+                <input type="email" class="form-control" id="email" placeholder="Enter with your Email"
+                       th:field="*{email}" required>
                 <label for="email">Email</label>
             </div>
             <div class="form-floating col-6 mb-3">
-                <input type="password" class="form-control" id="password" placeholder="Enter with your Password">
+                <input type="password" class="form-control" id="password" placeholder="Enter with your Password"
+                       th:field="*{password}" required>
                 <label for="password">Password</label>
             </div>
             <div class="form-floating col-6 mb-3">
-                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>
                 <label for="confirmPassword">Confirm Password</label>
             </div>
             <div class="form-floating col-8 mb-3">
-                <input type="text" class="form-control" id="nome" placeholder="Enter with your Nome">
+                <input type="text" class="form-control" id="nome" placeholder="Enter with your Nome"
+                       th:field="*{nome}" required>
                 <label for="nome">Nome</label>
             </div>
-            <div class="form-floating col-4 mb-3">
-                <input type="date" class="form-control" id="dataNascimento" placeholder="Enter with your Data de Nascimento">
+            <!--<div class="form-floating col-4 mb-3">
+                <input type="date" class="form-control" id="dataNascimento" placeholder="Enter with your Data de Nascimento"
+                       th:field="*{dataNascimento}" required>
                 <label for="dataNascimento">Data de Nascimento</label>
-            </div>
+            </div>-->
             <div class="form-floating col-4 mb-3">
-                <input type="number" class="form-control" id="nif" placeholder="Enter with your NIF">
+                <input type="number" class="form-control" id="nif" placeholder="Enter with your NIF"
+                       th:field="*{nif}" required>
                 <label for="nif">NIF</label>
             </div>
             <div class="form-floating col-4 mb-3">
-                <input type="number" class="form-control" id="NCC" placeholder="Enter with your NCC">
+                <input type="number" class="form-control" id="NCC" placeholder="Enter with your NCC"
+                       th:field="*{numeroCc}" required>
                 <label for="NCC">NCC</label>
             </div>
             <div class="form-floating col-4 mb-3">
-                <input type="number" class="form-control" id="contacto" placeholder="Enter with your Contacto">
+                <input type="number" class="form-control" id="contacto" placeholder="Enter with your Contacto"
+                       th:field="*{contacto}" required>
                 <label for="contacto">Contacto</label>
             </div>
             <div class="form-floating col-4 mb-3">
-                <input type="text" class="form-control" id="localidade" placeholder="Enter with your Localidade">
+                <input type="text" class="form-control" id="localidade" placeholder="Enter with your Localidade"
+                       th:field="*{localizacao.localidade}" required>
                 <label for="localidade">Localidade</label>
             </div>
             <div class="form-floating col-8 mb-3">
-                <input type="text" class="form-control" id="rua" placeholder="Enter with your Rua">
+                <input type="text" class="form-control" id="rua" placeholder="Enter with your Rua"
+                       th:field="*{localizacao.rua}" required>
                 <label for="rua">Rua</label>
             </div>
             <div class="form-floating col-6 mb-3">
-                <input type="text" class="form-control" id="cidade" placeholder="Enter with your Cidade">
+                <input type="text" class="form-control" id="cidade" placeholder="Enter with your Cidade"
+                       th:field="*{localizacao.cidade}" required>
                 <label for="cidade">Cidade</label>
             </div>
             <div class="form-floating col-4 mb-3">
-                <input type="text" class="form-control" id="codPostal" placeholder="Enter with your Código Postal">
+                <input type="text" class="form-control" id="codPostal" placeholder="Enter with your Código Postal"
+                       th:field="*{localizacao.codigoPostal}" required>
                 <label for="codPostal">Código Postal</label>
             </div>
             <div class="form-floating col-2 mb-3">
-                <input type="number" class="form-control" id="nPorta" placeholder="Enter with your Número de Porta">
+                <input type="number" class="form-control" id="nPorta" placeholder="Enter with your Número de Porta"
+                       th:field="*{localizacao.numeroPorta}" required>
                 <label for="nPorta">Número de Porta</label>
             </div>
             <div class="form-floating mt-4 text-center">
                 <button class="btn btn-primary" type="submit">Entrar</button>
+            </div>
+            <div class="form-floating mt-3 text-center">
+                <a class="link-primary" th:href="@{/login}" style="text-decoration: none">Já realizei registo! Voltar ao Login. </a>
             </div>
         </div>
     </form>

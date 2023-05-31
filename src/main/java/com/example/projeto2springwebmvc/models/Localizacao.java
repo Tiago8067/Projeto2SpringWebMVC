@@ -14,11 +14,17 @@ import java.util.List;
 public class Localizacao implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idlocalizacao")
     private Integer idLocalizacao;
+    @Column(name = "codigopostal")
     private String codigoPostal;
+    @Column(name = "localidade")
     private String localidade;
+    @Column(name = "rua")
     private String rua;
+    @Column(name = "numeroporta")
     private Integer numeroPorta;
+    @Column(name = "cidade")
     private String cidade;
 
     @OneToMany(mappedBy = "localizacao")

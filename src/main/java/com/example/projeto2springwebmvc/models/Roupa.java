@@ -16,15 +16,21 @@ import java.io.Serializable;
 public class Roupa implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idroupa")
     //@Column(unique = true, updatable = false)
     private Integer idRoupa;
+    @Column(name = "imagesrc")
     private String imageSrc;
+    @Column(name = "stock")
     private Integer stock;
     @Enumerated(EnumType.STRING)
+    @Column(name = "categoriaroupa")
     private CategoriaRoupa categoriaRoupa;
     @Enumerated(EnumType.STRING)
+    @Column(name = "tamanhoroupa")
     private TamanhoRoupa tamanhoRoupa;
     @Enumerated(EnumType.STRING)
+    @Column(name = "tiporoupa")
     private TipoRoupa tipoRoupa;
 
     @ManyToOne

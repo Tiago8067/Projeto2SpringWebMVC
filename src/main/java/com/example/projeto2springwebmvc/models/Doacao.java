@@ -14,7 +14,9 @@ import java.time.Instant;
 public class Doacao implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "iddoacao")
     private Integer idDoacao;
+    @Column(name = "datadadoacao")
     private Instant dataDaDoacao;
     @ManyToOne
     @JoinColumn(name = "utilizador_id", referencedColumnName = "idUtilizador")

@@ -18,13 +18,15 @@ public class RoupaDasEncomendas implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idRoupaDasEncomendas;
+    @Column(name = "idroupadasencomendas")
+    private Integer idroupaDasEncomendas;
+    @Column(name = "datadeentrega")
     private Instant dataDeEntrega;
     @Enumerated(EnumType.STRING)
-    private CategoriaRoupa categoriaRoupa;
-    @Enumerated(EnumType.STRING)
+    @Column(name = "tamanhoroupa")
     private TamanhoRoupa tamanhoRoupa;
     @Enumerated(EnumType.STRING)
+    @Column(name = "tiporoupa")
     private TipoRoupa tipoRoupa;
 
     @ManyToOne

@@ -43,14 +43,20 @@
                     <label for="nPorta">Quantidade</label>
                 </div>
                 <div class="form-floating mt-4 text-center">
-                    <!--<button class="btn btn-primary" type="submit" th:href="@{doacoes}">Voltar</button>-->
-                    <button class="btn btn-primary" type="submit">Adicionar</button>
+                    <button class="btn btn-primary m-2" type="submit">Adicionar</button>
+                    <a class="btn btn-secondary m-2" th:href="@{/doacoes}">Voltar</a>
                 </div>
             </div>
         </form>
     </div>
 
 </div>
+
+<script type="text/javascript">
+    function cancelForm() {
+        window.location = "[[@{/doacoes}]]"
+    }
+</script>
 
 </body>
 </html>

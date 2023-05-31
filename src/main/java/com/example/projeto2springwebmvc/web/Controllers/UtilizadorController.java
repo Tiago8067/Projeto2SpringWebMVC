@@ -2,6 +2,7 @@ package com.example.projeto2springwebmvc.web.Controllers;
 
 import com.example.projeto2springwebmvc.Services.UtilizadorService;
 import com.example.projeto2springwebmvc.models.Utilizador;
+import com.example.projeto2springwebmvc.models.enums.TipoUtilizador;
 import com.example.projeto2springwebmvc.repositories.UtilizadorRepository;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -11,10 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,25 +28,30 @@ public class UtilizadorController {
         return "login";
     }
 
-    @GetMapping(path = "/registrar")
-    public String registrar() {
+    @GetMapping("/novo")
+    public String mostraNovoForm(Model model) {
+
+        for (Utilizador u : utilizadorService.utilizadorList()) {
+            if (u.getTipoUtilizador().equals(TipoUtilizador.CLIENTE)){
+                System.out.println(u.getNome());
+            }
+        }
+
+        model.addAttribute("utilizador", new Utilizador());
         return "registro";
+    }
+
+    @PostMapping("/registrar")
+    public String registrar(Utilizador utilizador) {
+        utilizadorService.salvarCliente(utilizador);
+
+        return "login";
     }
 
     @GetMapping(path = "/homePage")
     public String homePage() {
         return "homePage";
     }
-
-    /*@GetMapping(path = "/doacoes")
-    public String doacoes() {
-        return "listDoacoes";
-    }*/
-
-    /*@GetMapping(path = "/addDoacao")
-    public String addDoacao() {
-        return "addDoacao";
-    }*/
 
     @GetMapping(path = "/index")
     public String utilizadores(Model model,

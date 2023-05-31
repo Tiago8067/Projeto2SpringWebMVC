@@ -13,8 +13,11 @@ import java.util.List;
 public class Fornecedor implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idfornecedor")
     private Integer idFornecedor;
+    @Column(name = "nome")
     private String nome;
+    @Column(name = "contacto")
     private Integer contacto;
     @ManyToOne
     @JoinColumn(name = "localizacao_id", referencedColumnName = "idLocalizacao")

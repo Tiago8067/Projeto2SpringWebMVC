@@ -14,7 +14,9 @@ import java.util.List;
 public class Roupa_Doacao implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_roupa_doacao")
     private Integer id_roupa_doacao;
+    @Column(name = "quantidade")
     private Integer quantidade;
 
     @OneToMany(mappedBy = "roupa_doacao")
