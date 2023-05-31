@@ -22,13 +22,14 @@ import java.util.Optional;
 
 @Controller
 @AllArgsConstructor
-public class UtilizadorController {
+public class UtilizadorAutenticacaoController {
     private UtilizadorRepository utilizadorRepository;
     @Autowired
     private UtilizadorService utilizadorService;
-
     @Autowired
     private LocalizacaoService localizacaoService;
+
+    public static Optional<Utilizador> utilizadorLogado;
 
     @GetMapping(path = "/login")
     public String login(Model model) {
@@ -38,15 +39,9 @@ public class UtilizadorController {
 
     @GetMapping("/novo")
     public String mostraNovoForm(Model model) {
-
-        for (Utilizador u : utilizadorService.utilizadorList()) {
-            if (u.getTipoUtilizador().equals(TipoUtilizador.CLIENTE)) {
-                System.out.println(u.getNome());
-            }
-        }
-
         model.addAttribute("utilizador", new Utilizador());
         model.addAttribute("localizacao", new Localizacao());
+
         return "registro";
     }
 
@@ -60,8 +55,13 @@ public class UtilizadorController {
     }
 
     @PostMapping("/entrar")
-    public String entrar(@ModelAttribute Utilizador utilizador, Model model) {
+    public String entrar(@ModelAttribute Utilizador utilizador) {
         Optional<Utilizador> autenticado = utilizadorService.verificaDadosLogin(utilizador.getUsername(), utilizador.getPassword());
+
+        utilizadorLogado = autenticado;
+        utilizadorLogado.ifPresent(value -> System.out.println(value.getUsername()));
+
+
         if (autenticado.isPresent() && autenticado.get().getTipoUtilizador().equals(TipoUtilizador.CLIENTE) && autenticado.get().getEstadoUtilizador().equals(EstadoUtilizador.ATIVO)) {
             return "homePage";
         } else {
@@ -73,6 +73,8 @@ public class UtilizadorController {
     public String homePage() {
         return "homePage";
     }
+
+
 
     @GetMapping(path = "/index")
     public String utilizadores(Model model,
@@ -114,7 +116,7 @@ public class UtilizadorController {
     }
 
     @PostMapping(path = "/save")
-    public String save(Model model, @Valid Utilizador utilizador, BindingResult bindingResult,
+    public String save(@Valid Utilizador utilizador, BindingResult bindingResult,
                        @RequestParam(defaultValue = "0") int page,
                        @RequestParam(defaultValue = "") String keyword) {
         if (bindingResult.hasErrors()) return "formUtilizadors";

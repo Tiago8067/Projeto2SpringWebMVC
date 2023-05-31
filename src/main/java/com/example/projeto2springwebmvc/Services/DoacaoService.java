@@ -48,4 +48,8 @@ public class DoacaoService {
         }
         return linhaDoacoesList;
     }
+
+    public void salvarDoacao(Doacao doacao) {
+        doacaoRepository.save(doacao);
+    }
 }

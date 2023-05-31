@@ -1,10 +1,7 @@
 package com.example.projeto2springwebmvc.web.Controllers;
 
 import com.example.projeto2springwebmvc.Services.EncomendaService;
-import com.example.projeto2springwebmvc.models.Doacao;
 import com.example.projeto2springwebmvc.modelsHelp.LinhaEncomendas;
-import com.example.projeto2springwebmvc.repositories.EncomendaRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +12,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping(value = "/encomendas")
-public class EncomendaController {
+public class EncomendaDasRoupasController {
     @Autowired
     private EncomendaService encomendaService;
 
