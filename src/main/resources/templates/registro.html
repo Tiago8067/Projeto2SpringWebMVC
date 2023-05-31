@@ -57,33 +57,35 @@
                        th:field="*{contacto}" required>
                 <label for="contacto">Contacto</label>
             </div>
-            <div class="form-floating col-4 mb-3">
-                <input type="text" class="form-control" id="localidade" placeholder="Enter with your Localidade"
-                       th:field="*{localizacao.localidade}" required>
-                <label for="localidade">Localidade</label>
-            </div>
-            <div class="form-floating col-8 mb-3">
-                <input type="text" class="form-control" id="rua" placeholder="Enter with your Rua"
-                       th:field="*{localizacao.rua}" required>
-                <label for="rua">Rua</label>
-            </div>
-            <div class="form-floating col-6 mb-3">
-                <input type="text" class="form-control" id="cidade" placeholder="Enter with your Cidade"
-                       th:field="*{localizacao.cidade}" required>
-                <label for="cidade">Cidade</label>
-            </div>
-            <div class="form-floating col-4 mb-3">
-                <input type="text" class="form-control" id="codPostal" placeholder="Enter with your Código Postal"
-                       th:field="*{localizacao.codigoPostal}" required>
-                <label for="codPostal">Código Postal</label>
-            </div>
-            <div class="form-floating col-2 mb-3">
-                <input type="number" class="form-control" id="nPorta" placeholder="Enter with your Número de Porta"
-                       th:field="*{localizacao.numeroPorta}" required>
-                <label for="nPorta">Número de Porta</label>
+            <div th:object="${localizacao}">
+                <div class="form-floating col-4 mb-3">
+                    <input type="text" class="form-control" id="localidade" placeholder="Enter with your Localidade"
+                           th:field="*{localidade}" required>
+                    <label for="localidade">Localidade</label>
+                </div>
+                <div class="form-floating col-8 mb-3">
+                    <input type="text" class="form-control" id="rua" placeholder="Enter with your Rua"
+                           th:field="*{rua}" required>
+                    <label for="rua">Rua</label>
+                </div>
+                <div class="form-floating col-6 mb-3">
+                    <input type="text" class="form-control" id="cidade" placeholder="Enter with your Cidade"
+                           th:field="*{cidade}" required>
+                    <label for="cidade">Cidade</label>
+                </div>
+                <div class="form-floating col-4 mb-3">
+                    <input type="text" class="form-control" id="codPostal" placeholder="Enter with your Código Postal"
+                           th:field="*{codigoPostal}" required>
+                    <label for="codPostal">Código Postal</label>
+                </div>
+                <div class="form-floating col-2 mb-3">
+                    <input type="number" class="form-control" id="nPorta" placeholder="Enter with your Número de Porta"
+                           th:field="*{numeroPorta}" required>
+                    <label for="nPorta">Número de Porta</label>
+                </div>
             </div>
             <div class="form-floating mt-4 text-center">
-                <button class="btn btn-primary" type="submit">Entrar</button>
+                <button class="btn btn-primary" type="submit">Registrar</button>
             </div>
             <div class="form-floating mt-3 text-center">
                 <a class="link-primary" th:href="@{/login}" style="text-decoration: none">Já realizei registo! Voltar ao Login. </a>

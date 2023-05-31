@@ -1,6 +1,8 @@
 package com.example.projeto2springwebmvc.web.Controllers;
 
+import com.example.projeto2springwebmvc.Services.LocalizacaoService;
 import com.example.projeto2springwebmvc.Services.UtilizadorService;
+import com.example.projeto2springwebmvc.models.Localizacao;
 import com.example.projeto2springwebmvc.models.Utilizador;
 import com.example.projeto2springwebmvc.models.enums.TipoUtilizador;
 import com.example.projeto2springwebmvc.repositories.UtilizadorRepository;
@@ -23,6 +25,9 @@ public class UtilizadorController {
     @Autowired
     private UtilizadorService utilizadorService;
 
+    @Autowired
+    private LocalizacaoService localizacaoService;
+
     @GetMapping(path = "/login")
     public String login() {
         return "login";
@@ -38,11 +43,14 @@ public class UtilizadorController {
         }
 
         model.addAttribute("utilizador", new Utilizador());
+        model.addAttribute("localizacao", new Localizacao());
         return "registro";
     }
 
     @PostMapping("/registrar")
-    public String registrar(Utilizador utilizador) {
+    public String registrar(Utilizador utilizador, Localizacao localizacao) {
+        localizacaoService.salvarLocalizacao(localizacao);
+        utilizador.setLocalizacao(localizacao);
         utilizadorService.salvarCliente(utilizador);
 
         return "login";
