@@ -4,6 +4,7 @@ import com.example.projeto2springwebmvc.Services.LocalizacaoService;
 import com.example.projeto2springwebmvc.Services.UtilizadorService;
 import com.example.projeto2springwebmvc.models.Localizacao;
 import com.example.projeto2springwebmvc.models.Utilizador;
+import com.example.projeto2springwebmvc.models.enums.EstadoUtilizador;
 import com.example.projeto2springwebmvc.models.enums.TipoUtilizador;
 import com.example.projeto2springwebmvc.repositories.UtilizadorRepository;
 import jakarta.validation.Valid;
@@ -17,6 +18,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @AllArgsConstructor
@@ -29,7 +31,8 @@ public class UtilizadorController {
     private LocalizacaoService localizacaoService;
 
     @GetMapping(path = "/login")
-    public String login() {
+    public String login(Model model) {
+        model.addAttribute("loginResquest", new Utilizador());
         return "login";
     }
 
@@ -37,7 +40,7 @@ public class UtilizadorController {
     public String mostraNovoForm(Model model) {
 
         for (Utilizador u : utilizadorService.utilizadorList()) {
-            if (u.getTipoUtilizador().equals(TipoUtilizador.CLIENTE)){
+            if (u.getTipoUtilizador().equals(TipoUtilizador.CLIENTE)) {
                 System.out.println(u.getNome());
             }
         }
@@ -56,7 +59,17 @@ public class UtilizadorController {
         return "login";
     }
 
-    @GetMapping(path = "/homePage")
+    @PostMapping("/entrar")
+    public String entrar(@ModelAttribute Utilizador utilizador, Model model) {
+        Optional<Utilizador> autenticado = utilizadorService.verificaDadosLogin(utilizador.getUsername(), utilizador.getPassword());
+        if (autenticado.isPresent() && autenticado.get().getTipoUtilizador().equals(TipoUtilizador.CLIENTE) && autenticado.get().getEstadoUtilizador().equals(EstadoUtilizador.ATIVO)) {
+            return "homePage";
+        } else {
+            return "login";
+        }
+    }
+
+    @GetMapping("/homePage")
     public String homePage() {
         return "homePage";
     }
@@ -106,7 +119,7 @@ public class UtilizadorController {
                        @RequestParam(defaultValue = "") String keyword) {
         if (bindingResult.hasErrors()) return "formUtilizadors";
         utilizadorRepository.save(utilizador);
-        return "redirect:/index?page="+page+"&keyword="+keyword;
+        return "redirect:/index?page=" + page + "&keyword=" + keyword;
     }
 
     @GetMapping("/editUtilizador")

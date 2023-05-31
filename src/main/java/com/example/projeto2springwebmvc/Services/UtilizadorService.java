@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UtilizadorService {
@@ -23,5 +24,9 @@ public class UtilizadorService {
         utilizador.setEstadoUtilizador(EstadoUtilizador.ATIVO);
         utilizador.setTipoUtilizador(TipoUtilizador.CLIENTE);
         utilizadorRepository.save(utilizador);
+    }
+
+    public Optional<Utilizador> verificaDadosLogin(String username, String password) {
+        return utilizadorRepository.findUtilizadorByUsernameAndPassword(username, password);
     }
 }
