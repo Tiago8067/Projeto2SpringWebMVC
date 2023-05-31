@@ -29,4 +29,8 @@ public class UtilizadorService {
     public Optional<Utilizador> verificaDadosLogin(String username, String password) {
         return utilizadorRepository.findUtilizadorByUsernameAndPassword(username, password);
     }
+
+    public Utilizador retornaUtilizadorLogado(String username) {
+        return utilizadorRepository.findUtilizadorByUsername(username);
+    }
 }

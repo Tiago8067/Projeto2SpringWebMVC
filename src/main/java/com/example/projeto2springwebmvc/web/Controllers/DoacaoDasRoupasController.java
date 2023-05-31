@@ -3,6 +3,7 @@ package com.example.projeto2springwebmvc.web.Controllers;
 import com.example.projeto2springwebmvc.Services.DoacaoService;
 import com.example.projeto2springwebmvc.Services.RoupaService;
 import com.example.projeto2springwebmvc.Services.Roupa_DoacaoService;
+import com.example.projeto2springwebmvc.Services.UtilizadorService;
 import com.example.projeto2springwebmvc.models.Doacao;
 import com.example.projeto2springwebmvc.models.Roupa;
 import com.example.projeto2springwebmvc.models.Roupa_Doacao;
@@ -19,7 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping(value = "/doacoes")
@@ -30,8 +30,13 @@ public class DoacaoDasRoupasController {
     private Roupa_DoacaoService roupaDoacaoService;
     @Autowired
     private RoupaService roupaService;
+    @Autowired
+    private UtilizadorService utilizadorService;
     private final HelpAddDoacoes helpAddDoacoes;
-    private final Optional<Utilizador> utilizadorLogadoGuardado = UtilizadorAutenticacaoController.utilizadorLogado;
+    /*UtilizadorAutenticacaoController utilizadorAutenticacaoController = new UtilizadorAutenticacaoController();
+    String utilizadorUsernameLogadoGuardado = UtilizadorAutenticacaoController.utilizadorUsernameLogado;
+    String utilizadorPasswordLogadoGuardado = UtilizadorAutenticacaoController.utilizadorPasswordLogado;*/
+
 
     public DoacaoDasRoupasController() {
         this.helpAddDoacoes = new HelpAddDoacoes();
@@ -59,10 +64,15 @@ public class DoacaoDasRoupasController {
         roupaDoacaoService.salvarRoupa_Doacao(roupa_doacao);
         doacao.setRoupa_doacao(roupa_doacao);
         System.out.println("+++++++++++++++++++++++++++++++++++++++");
-        utilizadorLogadoGuardado.ifPresent(utilizador -> System.out.println(utilizador.getUsername()));
+        System.out.println(UtilizadorAutenticacaoController.utilizadorUsernameLogado);
+        String utilizadorUsernameLogadoGuardado = UtilizadorAutenticacaoController.utilizadorUsernameLogado;
+        System.out.println(utilizadorUsernameLogadoGuardado);
+        System.out.println(utilizadorService.retornaUtilizadorLogado(utilizadorUsernameLogadoGuardado).getUsername());
+        Utilizador utilizadorLogadoGuardado = utilizadorService.retornaUtilizadorLogado(utilizadorUsernameLogadoGuardado);
+        //System.out.println(utilizadorUsernameLogadoGuardado);
         System.out.println("+++++++++++++++++++++++++++++++++++++++");
 
-        //doacao.setUtilizador(utilizador);
+        doacao.setUtilizador(utilizadorLogadoGuardado);
         TipoRoupa tipoRoupa = roupa.getTipoRoupa();
         CategoriaRoupa categoriaRoupa = helpAddDoacoes.adicionarAssociarCategoria(tipoRoupa);
         roupa.setCategoriaRoupa(categoriaRoupa);
@@ -72,6 +82,6 @@ public class DoacaoDasRoupasController {
         doacaoService.salvarDoacao(doacao);
         roupaService.salvarRoupa(roupa);
 
-        return "listDoacoes";
+        return "redirect:/doacoes";
     }
 }

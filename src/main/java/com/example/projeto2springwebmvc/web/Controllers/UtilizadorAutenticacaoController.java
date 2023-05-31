@@ -9,6 +9,7 @@ import com.example.projeto2springwebmvc.models.enums.TipoUtilizador;
 import com.example.projeto2springwebmvc.repositories.UtilizadorRepository;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,6 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
+@NoArgsConstructor
 @AllArgsConstructor
 public class UtilizadorAutenticacaoController {
     private UtilizadorRepository utilizadorRepository;
@@ -29,7 +31,8 @@ public class UtilizadorAutenticacaoController {
     @Autowired
     private LocalizacaoService localizacaoService;
 
-    public static Optional<Utilizador> utilizadorLogado;
+    public static String utilizadorUsernameLogado;
+    public static String utilizadorPasswordLogado;
 
     @GetMapping(path = "/login")
     public String login(Model model) {
@@ -58,11 +61,12 @@ public class UtilizadorAutenticacaoController {
     public String entrar(@ModelAttribute Utilizador utilizador) {
         Optional<Utilizador> autenticado = utilizadorService.verificaDadosLogin(utilizador.getUsername(), utilizador.getPassword());
 
-        utilizadorLogado = autenticado;
-        utilizadorLogado.ifPresent(value -> System.out.println(value.getUsername()));
-
-
         if (autenticado.isPresent() && autenticado.get().getTipoUtilizador().equals(TipoUtilizador.CLIENTE) && autenticado.get().getEstadoUtilizador().equals(EstadoUtilizador.ATIVO)) {
+
+            utilizadorUsernameLogado = autenticado.get().getUsername();
+            System.out.println(utilizadorUsernameLogado);
+            utilizadorPasswordLogado = autenticado.get().getPassword();
+
             return "homePage";
         } else {
             return "login";

@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface UtilizadorRepository extends JpaRepository<Utilizador, Integer> {
     Page<Utilizador> findByUsernameContains(String kw, Pageable pageable);
     Optional<Utilizador> findUtilizadorByUsernameAndPassword(String username, String password);
+    Utilizador findUtilizadorByUsername(String username);
 }
