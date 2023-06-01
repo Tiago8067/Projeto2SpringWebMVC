@@ -32,7 +32,6 @@ public class UtilizadorAutenticacaoController {
     private LocalizacaoService localizacaoService;
 
     public static String utilizadorUsernameLogado;
-    public static String utilizadorPasswordLogado;
 
     @GetMapping(path = "/login")
     public String login(Model model) {
@@ -64,8 +63,6 @@ public class UtilizadorAutenticacaoController {
         if (autenticado.isPresent() && autenticado.get().getTipoUtilizador().equals(TipoUtilizador.CLIENTE) && autenticado.get().getEstadoUtilizador().equals(EstadoUtilizador.ATIVO)) {
 
             utilizadorUsernameLogado = autenticado.get().getUsername();
-            System.out.println(utilizadorUsernameLogado);
-            utilizadorPasswordLogado = autenticado.get().getPassword();
 
             return "homePage";
         } else {

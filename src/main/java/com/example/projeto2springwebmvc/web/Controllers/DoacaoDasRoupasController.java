@@ -33,10 +33,6 @@ public class DoacaoDasRoupasController {
     @Autowired
     private UtilizadorService utilizadorService;
     private final HelpAddDoacoes helpAddDoacoes;
-    /*UtilizadorAutenticacaoController utilizadorAutenticacaoController = new UtilizadorAutenticacaoController();
-    String utilizadorUsernameLogadoGuardado = UtilizadorAutenticacaoController.utilizadorUsernameLogado;
-    String utilizadorPasswordLogadoGuardado = UtilizadorAutenticacaoController.utilizadorPasswordLogado;*/
-
 
     public DoacaoDasRoupasController() {
         this.helpAddDoacoes = new HelpAddDoacoes();
@@ -62,23 +58,19 @@ public class DoacaoDasRoupasController {
     @PostMapping("/addDoacao")
     public String adicionarDoacao(Doacao doacao, Roupa_Doacao roupa_doacao, Roupa roupa) {
         roupaDoacaoService.salvarRoupa_Doacao(roupa_doacao);
-        doacao.setRoupa_doacao(roupa_doacao);
-        System.out.println("+++++++++++++++++++++++++++++++++++++++");
-        System.out.println(UtilizadorAutenticacaoController.utilizadorUsernameLogado);
-        String utilizadorUsernameLogadoGuardado = UtilizadorAutenticacaoController.utilizadorUsernameLogado;
-        System.out.println(utilizadorUsernameLogadoGuardado);
-        System.out.println(utilizadorService.retornaUtilizadorLogado(utilizadorUsernameLogadoGuardado).getUsername());
-        Utilizador utilizadorLogadoGuardado = utilizadorService.retornaUtilizadorLogado(utilizadorUsernameLogadoGuardado);
-        //System.out.println(utilizadorUsernameLogadoGuardado);
-        System.out.println("+++++++++++++++++++++++++++++++++++++++");
 
+        doacao.setRoupa_doacao(roupa_doacao);
+        String utilizadorUsernameLogadoGuardado = UtilizadorAutenticacaoController.utilizadorUsernameLogado;
+        Utilizador utilizadorLogadoGuardado = utilizadorService.retornaUtilizadorLogado(utilizadorUsernameLogadoGuardado);
         doacao.setUtilizador(utilizadorLogadoGuardado);
+
         TipoRoupa tipoRoupa = roupa.getTipoRoupa();
         CategoriaRoupa categoriaRoupa = helpAddDoacoes.adicionarAssociarCategoria(tipoRoupa);
         roupa.setCategoriaRoupa(categoriaRoupa);
         String imgSrc = helpAddDoacoes.adicionarAssociarImagem(tipoRoupa);
         roupa.setImageSrc(imgSrc);
         roupa.setRoupa_doacao(roupa_doacao);
+
         doacaoService.salvarDoacao(doacao);
         roupaService.salvarRoupa(roupa);
 

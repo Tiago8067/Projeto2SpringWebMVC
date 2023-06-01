@@ -1,5 +1,6 @@
 package com.example.projeto2springwebmvc.Services;
 
+import com.example.projeto2springwebmvc.models.Encomenda;
 import com.example.projeto2springwebmvc.modelsHelp.LinhaEncomendas;
 import com.example.projeto2springwebmvc.repositories.EncomendaRepository;
 import com.example.projeto2springwebmvc.util.ConnectionUtil;
@@ -44,5 +45,9 @@ public class EncomendaService {
             System.out.println("ERRO: " + e.getMessage());
         }
         return linhaEncomendaList;
+    }
+
+    public void salvarEncomenda(Encomenda encomenda) {
+        encomendaRepository.save(encomenda);
     }
 }
