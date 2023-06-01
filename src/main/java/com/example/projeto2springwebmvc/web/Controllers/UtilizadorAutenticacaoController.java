@@ -77,7 +77,7 @@ public class UtilizadorAutenticacaoController {
 
 
 
-    @GetMapping(path = "/index")
+    @GetMapping("/index")
     public String utilizadores(Model model,
                                @RequestParam(name = "page", defaultValue = "0") int page,
                                @RequestParam(name = "size", defaultValue = "2") int size,

@@ -9,6 +9,7 @@ import com.example.projeto2springwebmvc.models.LinhaEncomenda;
 import com.example.projeto2springwebmvc.models.RoupaDasEncomendas;
 import com.example.projeto2springwebmvc.models.Utilizador;
 import com.example.projeto2springwebmvc.models.enums.EstadoEncomenda;
+import com.example.projeto2springwebmvc.modelsHelp.LinhaDoacoes;
 import com.example.projeto2springwebmvc.modelsHelp.LinhaEncomendas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -33,7 +35,16 @@ public class EncomendaDasRoupasController {
 
     @GetMapping()
     public String mostraEncomendaList(Model model) {
-        List<LinhaEncomendas> roupasEncomendadas = encomendaService.encomendasDasRoupas();
+        /*List<LinhaEncomendas> roupasEncomendadas = encomendaService.encomendasDasRoupas();*/
+        List<LinhaEncomendas> roupasEncomendadas = new ArrayList<>();
+
+        String utilizadorUsernameLogadoGuardado = UtilizadorAutenticacaoController.utilizadorUsernameLogado;
+        for (LinhaEncomendas l : encomendaService.encomendasDasRoupas()) {
+            if (l.getUsernameCliente().equals(utilizadorUsernameLogadoGuardado)) {
+                roupasEncomendadas.add(l);
+            }
+        }
+
         model.addAttribute("roupasEncomendadas", roupasEncomendadas);
 
         return "listEncomendas";
