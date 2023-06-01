@@ -64,15 +64,10 @@ public class UtilizadorAutenticacaoController {
 
             utilizadorUsernameLogado = autenticado.get().getUsername();
 
-            return "homePage";
+            return "stock";
         } else {
             return "login";
         }
-    }
-
-    @GetMapping("/homePage")
-    public String homePage() {
-        return "homePage";
     }
 
 
