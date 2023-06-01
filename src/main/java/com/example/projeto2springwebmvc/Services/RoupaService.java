@@ -31,6 +31,7 @@ public class RoupaService {
 
         //TODO -> Verificar a situacao do sotck
 
+        /*String sql = " SELECT DISTINCT categoriaroupa, imagesrc, tiporoupa, tamanhoroupa, stock FROM tb_roupa; ";*/
         String sql = " SELECT DISTINCT categoriaroupa, imagesrc, tiporoupa, tamanhoroupa FROM tb_roupa; ";
         List<Roupa> listaRoupas = new ArrayList<>();
 
@@ -44,6 +45,7 @@ public class RoupaService {
                 roupa.setTamanhoRoupa(TamanhoRoupa.valueOf(rs.getString("tamanhoroupa")));
                 roupa.setCategoriaRoupa(CategoriaRoupa.valueOf(rs.getString("categoriaroupa")));
                 roupa.setImageSrc(rs.getString("imagesrc"));
+                /*roupa.setStock(rs.getInt("stock"));*/
                 listaRoupas.add(roupa);
             }
         } catch (SQLException sqlException) {

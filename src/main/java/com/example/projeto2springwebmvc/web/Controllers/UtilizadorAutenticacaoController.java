@@ -57,14 +57,17 @@ public class UtilizadorAutenticacaoController {
     }
 
     @PostMapping("/entrar")
-    public String entrar(@ModelAttribute Utilizador utilizador) {
+    public String entrar(@ModelAttribute Utilizador utilizador, Model model) {
         Optional<Utilizador> autenticado = utilizadorService.verificaDadosLogin(utilizador.getUsername(), utilizador.getPassword());
 
         if (autenticado.isPresent() && autenticado.get().getTipoUtilizador().equals(TipoUtilizador.CLIENTE) && autenticado.get().getEstadoUtilizador().equals(EstadoUtilizador.ATIVO)) {
 
             utilizadorUsernameLogado = autenticado.get().getUsername();
 
-            return "stock";
+            /*model.addAttribute("username", utilizadorUsernameLogado);*/
+            // todo -> mandar username do user logado para o dropdopwn
+
+            return "redirect:/homePage";
         } else {
             return "login";
         }

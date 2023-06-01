@@ -18,49 +18,16 @@
             <div th:each="r : ${listaRoupas}">
                 <div class="col">
                     <div class="card h-100">
-                        <img src="..." class="card-img-top" alt="Imagem Associada à Roupa">
+                        <img th:src="${r.imageSrc}" class="card-img-top" alt="Imagem Associada à Roupa">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${r.tipoRoupa}"></h5>
                             <h6 class="card-subtitle mb-2 text-muted" th:text="${r.categoriaRoupa}"></h6>
                             <p class="card-text">Tamanho : <span th:text="${r.tamanhoRoupa}"></span> </p>
-                            <p class="card-text">Sotck : <span th:text="${r.stock}"></span></p>
+                            <p class="card-text">Stock : <span th:text="${r.stock}"></span> </p>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--<div class="col">
-                <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">SAIA</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">CATEGORIADEBAIXO</h6>
-                        <p class="card-text">Tamanho : M</p>
-                        <p class="card-text">Sotck : 12</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">SAIA</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">CATEGORIADEBAIXO</h6>
-                        <p class="card-text">Tamanho : M</p>
-                        <p class="card-text">Sotck : 12</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">SAIA</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">CATEGORIADEBAIXO</h6>
-                        <p class="card-text">Tamanho : M</p>
-                        <p class="card-text">Sotck : 12</p>
-                    </div>
-                </div>
-            </div>-->
         </div>
     </div>
 
