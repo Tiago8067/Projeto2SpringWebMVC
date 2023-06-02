@@ -30,11 +30,9 @@
                             <input id="keyword" type="text" name="keyword" th:value="${keyword}">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
-                        <!--table-bordered-->
                         <table class="table">
                             <thead>
                             <tr>
-                                <!--<th>Categoria de Roupa</th>-->
                                 <th>Tipo de Roupa</th>
                                 <th>Tamanho de Roupa</th>
                                 <th>Quantidade</th>
@@ -43,7 +41,7 @@
                             </thead>
 
                             <tbody>
-                            <tr th:each="d : ${roupasDoadas}" >
+                            <tr th:each="d : ${roupasDoadas}">
                                 <td th:text="${d.tipoRoupa}"></td>
                                 <td th:text="${d.tamanhoRoupa}"></td>
                                 <td th:text="${d.quantidade}"></td>

@@ -13,7 +13,8 @@
 <div layout:fragment="content">
 
     <div class="container mt-5">
-        <form class="row g-3" th:action="@{/encomendas/guardarEdicaoEncomenda/{id} (id=${encomenda.idEncomenda})}" method="post" th:object="${roupaDasEncomendas}">
+        <form class="row g-3" th:action="@{/encomendas/guardarEdicaoEncomenda/{id} (id=${encomenda.idEncomenda})}"
+              method="post" th:object="${roupaDasEncomendas}">
             <div class="row border-bottom border-danger rounded-5 p-3 bg-white shadow box-area">
                 <div class="text-center mb-2">
                     <h4>[[${pageTitle}]]</h4>
@@ -32,20 +33,11 @@
                                 th:value="${tamanhoRoupa}" th:text="${tamanhoRoupa}"></option>
                     </select>
                 </div>
-                <!--<div th:object="${encomenda}">
-                    <div class="form-floating col-4 mb-3" th:object="${encomenda}">
-                        <input type="date" class="form-control" id="dataDoacao"
-                               placeholder="Enter with your Data da Doação" th:field="*{dataDePedido}">
-                        <label for="dataDoacao">Data da Doação</label>
-                    </div>
-                </div>-->
-                <!--<div th:object="linhaEncomenda">-->
                 <div class="form-floating col-3 mb-3" th:object="${linhaEncomenda}">
                     <input type="number" class="form-control" id="nPorta" placeholder="Enter with your Número de Porta"
                            th:field="*{quantidade}">
                     <label for="nPorta">Quantidade</label>
                 </div>
-                <!--</div>-->
                 <div class="form-floating mt-4 text-center">
                     <button class="btn btn-primary m-2" type="submit">Adicionar</button>
                     <a class="btn btn-secondary m-2" th:href="@{/encomendas}">Voltar</a>

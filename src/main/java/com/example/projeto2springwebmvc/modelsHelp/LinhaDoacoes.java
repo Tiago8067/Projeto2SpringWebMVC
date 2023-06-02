@@ -14,13 +14,6 @@ public class LinhaDoacoes {
     private String tamanhoRoupa;
     private Integer quantidade;
 
-    public LinhaDoacoes(String username, String tipoRoupa, String tamanhoRoupa, int quantidade) {
-        this.username = username;
-        this.tipoRoupa = tipoRoupa;
-        this.tamanhoRoupa = tamanhoRoupa;
-        this.quantidade = quantidade;
-    }
-
     public LinhaDoacoes(int idDoacao, String username, String tipoRoupa, String tamanhoRoupa, int quantidade) {
         this.idDoacao = idDoacao;
         this.username = username;
@@ -28,5 +21,4 @@ public class LinhaDoacoes {
         this.tamanhoRoupa = tamanhoRoupa;
         this.quantidade = quantidade;
     }
-
 }

@@ -1,6 +1,5 @@
 package com.example.projeto2springwebmvc.Services;
 
-import com.example.projeto2springwebmvc.models.Doacao;
 import com.example.projeto2springwebmvc.models.Encomenda;
 import com.example.projeto2springwebmvc.modelsHelp.LinhaEncomendas;
 import com.example.projeto2springwebmvc.repositories.EncomendaRepository;

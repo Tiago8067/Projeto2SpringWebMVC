@@ -7,7 +7,6 @@ import com.example.projeto2springwebmvc.repositories.UtilizadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,10 +14,6 @@ public class UtilizadorService {
 
     @Autowired
     private UtilizadorRepository utilizadorRepository;
-
-    public List<Utilizador> utilizadorList() {
-        return utilizadorRepository.findAll();
-    }
 
     public void salvarCliente(Utilizador utilizador) {
         utilizador.setEstadoUtilizador(EstadoUtilizador.ATIVO);

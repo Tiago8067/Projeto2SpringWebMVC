@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.1.0</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.example</groupId>
     <artifactId>Projeto2SpringWebMVC</artifactId>
@@ -67,9 +67,6 @@
             <!--<version>3.1.0</version>-->
         </dependency>
 
-
-
-
     </dependencies>
 
     <build>
@@ -88,5 +85,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

@@ -6,7 +6,6 @@ import com.example.projeto2springwebmvc.Services.RoupaDasEncomendasService;
 import com.example.projeto2springwebmvc.Services.UtilizadorService;
 import com.example.projeto2springwebmvc.models.*;
 import com.example.projeto2springwebmvc.models.enums.EstadoEncomenda;
-import com.example.projeto2springwebmvc.modelsHelp.LinhaDoacoes;
 import com.example.projeto2springwebmvc.modelsHelp.LinhaEncomendas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +29,6 @@ public class EncomendaDasRoupasController {
 
     @GetMapping()
     public String mostraEncomendaList(Model model) {
-        /*List<LinhaEncomendas> roupasEncomendadas = encomendaService.encomendasDasRoupas();*/
         List<LinhaEncomendas> roupasEncomendadas = new ArrayList<>();
 
         String utilizadorUsernameLogadoGuardado = UtilizadorAutenticacaoController.utilizadorUsernameLogado;

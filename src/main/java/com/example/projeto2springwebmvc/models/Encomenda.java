@@ -4,6 +4,7 @@ import lombok.*;
 import com.example.projeto2springwebmvc.models.enums.EstadoEncomenda;
 
 import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.time.Instant;
 
@@ -13,7 +14,6 @@ import java.time.Instant;
 @Entity
 @Table(name = "tb_encomenda")
 public class Encomenda implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idencomenda")

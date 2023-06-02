@@ -6,6 +6,7 @@ import com.example.projeto2springwebmvc.models.enums.TamanhoRoupa;
 import com.example.projeto2springwebmvc.models.enums.TipoRoupa;
 
 import jakarta.persistence.*;
+
 import java.io.Serializable;
 
 @Data

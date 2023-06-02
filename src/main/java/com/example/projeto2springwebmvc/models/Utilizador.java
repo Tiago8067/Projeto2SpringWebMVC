@@ -1,7 +1,6 @@
 package com.example.projeto2springwebmvc.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -9,9 +8,6 @@ import com.example.projeto2springwebmvc.models.enums.EstadoUtilizador;
 import com.example.projeto2springwebmvc.models.enums.TipoUtilizador;
 
 import jakarta.persistence.*;
-import org.hibernate.validator.constraints.UniqueElements;
-import org.springframework.data.web.config.EnableSpringDataWebSupport;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -49,7 +45,7 @@ public class Utilizador implements Serializable {
     /*@DateTimeFormat(pattern = "yyyy-MM-dd")*/
 
     @Column(name = "datanascimento")
-    private Instant dataNascimento;
+    private String dataNascimento;
     @Column(name = "contacto")
     private Integer contacto;
     @Column(name = "imagemperfil")

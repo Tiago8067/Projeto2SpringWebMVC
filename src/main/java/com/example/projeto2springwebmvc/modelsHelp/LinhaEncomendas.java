@@ -17,10 +17,9 @@ public class LinhaEncomendas {
     private String tamanhoRoupa;
     private Integer quantidade;
     private String estado;
-    //todo falta as datas de pedido e de entrega
 
     public LinhaEncomendas(int idEncomenda, int idLinhaEncomenda, int idRoupa, String usernameCliente, String usernameFonecedor, String tipoRoupa, String tamanhoRoupa, int quantidade, String estado) {
-        this.idEncomenda =idEncomenda;
+        this.idEncomenda = idEncomenda;
         this.idLinhaEncomenda = idLinhaEncomenda;
         this.idRoupa = idRoupa;
         this.usernameCliente = usernameCliente;

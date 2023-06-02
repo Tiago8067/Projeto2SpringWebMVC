@@ -1,9 +1,6 @@
 package com.example.projeto2springwebmvc.Services;
 
-import com.example.projeto2springwebmvc.models.Doacao;
-import com.example.projeto2springwebmvc.models.LinhaEncomenda;
 import com.example.projeto2springwebmvc.models.RoupaDasEncomendas;
-import com.example.projeto2springwebmvc.models.Roupa_Doacao;
 import com.example.projeto2springwebmvc.repositories.RoupaDasEncomendasRepository;
 import com.example.projeto2springwebmvc.util.ConnectionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +21,7 @@ public class RoupaDasEncomendasService {
         roupaDasEncomendasRepository.save(roupaDasEncomendas);
     }
 
-    public List<RoupaDasEncomendas> roupaDasEncomendasList(){
+    public List<RoupaDasEncomendas> roupaDasEncomendasList() {
         return roupaDasEncomendasRepository.findAll();
     }
 

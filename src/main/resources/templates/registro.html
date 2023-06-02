@@ -15,7 +15,7 @@
             </div>
             <div class="form-floating col-4 mb-3">
                 <input type="text" class="form-control" id="username" placeholder="Enter with your Username"
-                        th:field="*{username}" required minlength="4" maxlength="30">
+                       th:field="*{username}" required minlength="4" maxlength="30">
                 <label for="username">Username</label>
             </div>
             <div class="form-floating col-8 mb-3">
@@ -29,7 +29,8 @@
                 <label for="password">Password</label>
             </div>
             <div class="form-floating col-6 mb-3">
-                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password"
+                       required>
                 <label for="confirmPassword">Confirm Password</label>
             </div>
             <div class="form-floating col-8 mb-3">
@@ -88,7 +89,8 @@
                 <button class="btn btn-primary" type="submit">Registrar</button>
             </div>
             <div class="form-floating mt-3 text-center">
-                <a class="link-primary" th:href="@{/login}" style="text-decoration: none">Já realizei registo! Voltar ao Login. </a>
+                <a class="link-primary" th:href="@{/login}" style="text-decoration: none">Já realizei registo! Voltar ao
+                    Login. </a>
             </div>
         </div>
     </form>

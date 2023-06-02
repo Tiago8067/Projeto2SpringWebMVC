@@ -3,6 +3,7 @@ package com.example.projeto2springwebmvc.models;
 import lombok.*;
 
 import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.List;
 

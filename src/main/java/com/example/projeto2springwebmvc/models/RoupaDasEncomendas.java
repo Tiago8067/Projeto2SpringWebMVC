@@ -1,11 +1,11 @@
 package com.example.projeto2springwebmvc.models;
 
 import lombok.*;
-import com.example.projeto2springwebmvc.models.enums.CategoriaRoupa;
 import com.example.projeto2springwebmvc.models.enums.TamanhoRoupa;
 import com.example.projeto2springwebmvc.models.enums.TipoRoupa;
 
 import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.time.Instant;
 
@@ -32,5 +32,4 @@ public class RoupaDasEncomendas implements Serializable {
     @ManyToOne
     @JoinColumn(name = "linha_encomenda_id", referencedColumnName = "idLinhaEncomenda")
     private LinhaEncomenda linha_encomenda;
-
 }

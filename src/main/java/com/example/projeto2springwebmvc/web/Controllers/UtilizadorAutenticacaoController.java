@@ -63,8 +63,6 @@ public class UtilizadorAutenticacaoController {
         if (autenticado.isPresent() && autenticado.get().getTipoUtilizador().equals(TipoUtilizador.CLIENTE) && autenticado.get().getEstadoUtilizador().equals(EstadoUtilizador.ATIVO)) {
 
             utilizadorUsernameLogado = autenticado.get().getUsername();
-
-            /*model.addAttribute("username", utilizadorUsernameLogado);*/
             // todo -> mandar username do user logado para o dropdopwn
 
             return "redirect:/homePage";
@@ -72,7 +70,6 @@ public class UtilizadorAutenticacaoController {
             return "login";
         }
     }
-
 
 
     @GetMapping("/index")

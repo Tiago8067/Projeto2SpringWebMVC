@@ -33,16 +33,10 @@
                                 th:value="${tamanhoRoupa}" th:text="${tamanhoRoupa}"></option>
                     </select>
                 </div>
-                <!--<div th:object="${doacao}" >
-                    <div class="form-floating col-4 mb-3">
-                        <input type="date" class="form-control" id="dataDoacao"
-                               placeholder="Enter with your Data da Doação" th:field="*{dataDaDoacao}">
-                        <label for="dataDoacao">Data da Doação</label>
-                    </div>
-                </div>-->
                 <div th:object="${roupaDoada}">
                     <div class="form-floating col-3 mb-3">
-                        <input type="number" class="form-control" id="quantidade" placeholder="Enter with your quantidade"
+                        <input type="number" class="form-control" id="quantidade"
+                               placeholder="Enter with your quantidade"
                                th:field="*{quantidade}">
                         <label for="quantidade">Quantidade</label>
                     </div>
