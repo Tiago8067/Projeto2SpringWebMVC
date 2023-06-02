@@ -4,19 +4,14 @@ import com.example.projeto2springwebmvc.Services.EncomendaService;
 import com.example.projeto2springwebmvc.Services.LinhaEncomendaService;
 import com.example.projeto2springwebmvc.Services.RoupaDasEncomendasService;
 import com.example.projeto2springwebmvc.Services.UtilizadorService;
-import com.example.projeto2springwebmvc.models.Encomenda;
-import com.example.projeto2springwebmvc.models.LinhaEncomenda;
-import com.example.projeto2springwebmvc.models.RoupaDasEncomendas;
-import com.example.projeto2springwebmvc.models.Utilizador;
+import com.example.projeto2springwebmvc.models.*;
 import com.example.projeto2springwebmvc.models.enums.EstadoEncomenda;
 import com.example.projeto2springwebmvc.modelsHelp.LinhaDoacoes;
 import com.example.projeto2springwebmvc.modelsHelp.LinhaEncomendas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,6 +68,51 @@ public class EncomendaDasRoupasController {
 
         encomendaService.salvarEncomenda(encomenda);
         roupaDasEncomendasService.salvarRoupaDasEncomendas(roupaDasEncomendas);
+
+        return "redirect:/encomendas";
+    }
+
+    @GetMapping("/editar/{id}")
+    public String mostraFormEditarEncomenda(@PathVariable("id") Integer id, Model model) {
+        Encomenda encomenda = encomendaService.getEncomendaPorId(id);
+
+        LinhaEncomenda linhaEncomenda = new LinhaEncomenda();
+        RoupaDasEncomendas roupaDasEncomendas = new RoupaDasEncomendas();
+
+        List<LinhaEncomenda> linhaEncomendaList = linhaEncomendaService.linhaEncomendaList();
+        List<RoupaDasEncomendas> roupaDasEncomendasList = roupaDasEncomendasService.roupaDasEncomendasList();
+
+        for (LinhaEncomenda l : linhaEncomendaList) {
+            if (l.getIdLinhaEncomenda() == encomendaService.getEncomendaPorId(id).getLinha_encomenda().getIdLinhaEncomenda()) {
+                linhaEncomenda = linhaEncomendaService.getLinhaEncomendaPorId(l.getIdLinhaEncomenda());
+            }
+        }
+
+        for (RoupaDasEncomendas r : roupaDasEncomendasList) {
+            if (r.getLinha_encomenda().getIdLinhaEncomenda() == encomendaService.getEncomendaPorId(id).getLinha_encomenda().getIdLinhaEncomenda()) {
+                roupaDasEncomendas = roupaDasEncomendasService.getRoupaDasEncomendasPorId(r.getIdroupaDasEncomendas());
+            }
+        }
+
+        model.addAttribute("encomenda", encomenda);
+        model.addAttribute("linhaEncomenda", linhaEncomenda);
+        model.addAttribute("roupaDasEncomendas", roupaDasEncomendas);
+        model.addAttribute("pageTitle", "Edita Encomenda (ID: " + id + ")");
+
+        return "editarEncomenda";
+    }
+
+    @PostMapping("/guardarEdicaoEncomenda/{id}")
+    public String guardarEdicaoDoacao(@PathVariable("id") Integer id, @ModelAttribute("encomenda") Encomenda encomenda,
+                                      @ModelAttribute("linhaEncomenda") LinhaEncomenda linhaEncomenda,
+                                      @ModelAttribute("roupaDasEncomendas") RoupaDasEncomendas roupaDasEncomendas) {
+        Encomenda encomendaExistente = encomendaService.getEncomendaPorId(id);
+        LinhaEncomenda linhaEncomendaExistente = linhaEncomendaService.getLinhaEncomendaPorId(encomendaExistente.getLinha_encomenda().getIdLinhaEncomenda());
+
+        linhaEncomendaExistente.setQuantidade(linhaEncomenda.getQuantidade());
+
+        linhaEncomendaService.salvarLinhaEncomenda(linhaEncomendaExistente);
+        roupaDasEncomendasService.atualizarRoupaDasEncomendas(encomendaExistente.getLinha_encomenda().getIdLinhaEncomenda(), String.valueOf(roupaDasEncomendas.getTipoRoupa()), String.valueOf(roupaDasEncomendas.getTamanhoRoupa()));
 
         return "redirect:/encomendas";
     }

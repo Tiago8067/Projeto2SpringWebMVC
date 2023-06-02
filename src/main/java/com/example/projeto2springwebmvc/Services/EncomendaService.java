@@ -1,5 +1,6 @@
 package com.example.projeto2springwebmvc.Services;
 
+import com.example.projeto2springwebmvc.models.Doacao;
 import com.example.projeto2springwebmvc.models.Encomenda;
 import com.example.projeto2springwebmvc.modelsHelp.LinhaEncomendas;
 import com.example.projeto2springwebmvc.repositories.EncomendaRepository;
@@ -13,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EncomendaService {
@@ -49,5 +51,11 @@ public class EncomendaService {
 
     public void salvarEncomenda(Encomenda encomenda) {
         encomendaRepository.save(encomenda);
+    }
+
+    public Encomenda getEncomendaPorId(Integer id) {
+        Optional<Encomenda> result = encomendaRepository.findById(id);
+
+        return result.orElse(null);
     }
 }

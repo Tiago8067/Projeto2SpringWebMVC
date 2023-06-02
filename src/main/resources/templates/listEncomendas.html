@@ -54,7 +54,7 @@
                                 <td></td>
                                 <td th:text="${e.estado}"></td>
                                 <td>
-                                    <a class="btn btn-success">
+                                    <a class="btn btn-success" th:href="@{'/encomendas/editar/' + ${e.idEncomenda}}">
                                         Editar
                                     </a>
                                 </td>
