@@ -7,14 +7,13 @@
 <head>
     <meta charset="UTF-8">
     <title>[[${pageTitle}]]</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
 </head>
 <body>
 
 <div layout:fragment="content">
 
     <div class="container mt-5">
-        <form class="row g-3" th:action="@{/doacoes/adicionarDoacao}" method="post" th:object="${roupa}">
+        <form class="row g-3" th:action="@{/doacoes/guardarEdicaoDoacao/{id} (id=${doacao.idDoacao})}" method="post" th:object="${roupa}">
             <div class="row border-bottom border-danger rounded-5 p-3 bg-white shadow box-area">
                 <div class="text-center mb-2">
                     <h4>[[${pageTitle}]]</h4>
@@ -48,7 +47,7 @@
                     </div>
                 </div>
                 <div class="form-floating mt-4 text-center">
-                    <button class="btn btn-primary m-2" type="submit">Adicionar</button>
+                    <button class="btn btn-primary m-2" type="submit">Atualizar Informação</button>
                     <a class="btn btn-secondary m-2" th:href="@{/doacoes}">Voltar</a>
                 </div>
             </div>

@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DoacaoService {
@@ -79,5 +80,15 @@ public class DoacaoService {
 
     public void salvarDoacao(Doacao doacao) {
         doacaoRepository.save(doacao);
+    }
+
+    public Doacao getDoacaoPorId(Integer id) {
+        Optional<Doacao> result = doacaoRepository.findById(id);
+        /*if (doacaoEdita.isPresent()){
+            return doacaoEdita.get();
+        }
+        return null;
+        Mesma coisa que em baixo*/
+        return result.orElse(null);
     }
 }
