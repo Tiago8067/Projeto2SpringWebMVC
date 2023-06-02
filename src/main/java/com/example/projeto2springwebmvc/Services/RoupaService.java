@@ -67,15 +67,15 @@ public class RoupaService {
         return result.orElse(null);
     }
 
-    public Roupa getRoupaPorIdChaveEstrangeira(Integer id) {
+    /*public Roupa getRoupaPorIdChaveEstrangeira(Integer id) {
         Optional<Roupa> result = Optional.ofNullable(roupaRepository.findByRoupa_doacao(id));
-        /*if (doacaoEdita.isPresent()){
+        *//*if (doacaoEdita.isPresent()){
             return doacaoEdita.get();
         }
         return null;
-        Mesma coisa que em baixo*/
+        Mesma coisa que em baixo*//*
         return result.orElse(null);
-    }
+    }*/
 
     /*public Roupa getRoupa(Roupa_Doacao roupa_doacao) {
         *//*Optional<Roupa> result = roupaRepository.findById(id);*//*

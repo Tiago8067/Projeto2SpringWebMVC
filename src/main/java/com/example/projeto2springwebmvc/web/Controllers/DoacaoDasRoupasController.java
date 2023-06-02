@@ -160,8 +160,8 @@ public class DoacaoDasRoupasController {
 
         Doacao doacaoExistente = doacaoService.getDoacaoPorId(id);
         Roupa_Doacao roupaDoacaoExistente = roupaDoacaoService.getRoupa_DoacaoPoId(doacaoExistente.getRoupa_doacao().getId_roupa_doacao());
-        //Roupa roupaExistente = roupaService.buscarRoupaPorIdChaveEstrangeira(doacaoExistente.getRoupa_doacao().getId_roupa_doacao());
-        Roupa roupaExistente = roupaService.getRoupaPorIdChaveEstrangeira(doacaoExistente.getRoupa_doacao().getId_roupa_doacao());
+        Roupa roupaExistente = roupaService.buscarRoupaPorIdChaveEstrangeira(doacaoExistente.getRoupa_doacao().getId_roupa_doacao());
+        //Roupa roupaExistente = roupaService.getRoupaPorIdChaveEstrangeira(doacaoExistente.getRoupa_doacao().getId_roupa_doacao());
 
         System.out.println(roupaDoacaoExistente.getQuantidade());
 
@@ -243,6 +243,7 @@ public class DoacaoDasRoupasController {
         roupaExistente.setRoupa_doacao(roupa.getRoupa_doacao());*/
 
         roupaDoacaoService.salvarRoupa_Doacao(roupaDoacaoExistente);
+        roupaService.atualizarRoupa(doacaoExistente.getRoupa_doacao().getId_roupa_doacao(), String.valueOf(roupa.getTipoRoupa()), String.valueOf(roupa.getTamanhoRoupa()));
 
         //doacao.setRoupa_doacao(roupa_doacao);
         //String utilizadorUsernameLogadoGuardado = UtilizadorAutenticacaoController.utilizadorUsernameLogado;
