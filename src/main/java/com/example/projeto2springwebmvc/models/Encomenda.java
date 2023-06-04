@@ -6,7 +6,7 @@ import com.example.projeto2springwebmvc.models.enums.EstadoEncomenda;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -19,7 +19,7 @@ public class Encomenda implements Serializable {
     @Column(name = "idencomenda")
     private Integer idEncomenda;
     @Column(name = "datadepedido")
-    private Instant dataDePedido;
+    private LocalDate dataDePedido;
     @Enumerated(EnumType.STRING)
     @Column(name = "estadoencomenda")
     private EstadoEncomenda estadoEncomenda;

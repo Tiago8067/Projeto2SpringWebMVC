@@ -8,6 +8,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -21,7 +22,7 @@ public class RoupaDasEncomendas implements Serializable {
     @Column(name = "idroupadasencomendas")
     private Integer idroupaDasEncomendas;
     @Column(name = "datadeentrega")
-    private Instant dataDeEntrega;
+    private LocalDate dataDeEntrega;
     @Enumerated(EnumType.STRING)
     @Column(name = "tamanhoroupa")
     private TamanhoRoupa tamanhoRoupa;

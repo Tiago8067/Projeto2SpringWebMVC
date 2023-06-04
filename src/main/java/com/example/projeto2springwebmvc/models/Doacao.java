@@ -5,7 +5,7 @@ import lombok.*;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -18,7 +18,7 @@ public class Doacao implements Serializable {
     @Column(name = "iddoacao")
     private Integer idDoacao;
     @Column(name = "datadadoacao")
-    private Instant dataDaDoacao;
+    private LocalDate dataDaDoacao;
     @ManyToOne
     @JoinColumn(name = "utilizador_id", referencedColumnName = "idUtilizador")
     private Utilizador utilizador;
