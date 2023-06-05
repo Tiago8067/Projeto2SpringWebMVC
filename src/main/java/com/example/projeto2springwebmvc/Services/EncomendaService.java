@@ -24,7 +24,7 @@ public class EncomendaService {
         ConnectionUtil connectionUtil = new ConnectionUtil();
         Connection conn = connectionUtil.criarConexao();
 
-        String sql = "SELECT u.username, r.tiporoupa, r.tamanhoroupa, le.quantidade, f.nome, e.estadoencomenda, e.idencomenda, le.idlinhaencomenda, r.idroupadasencomendas " +
+        String sql = "SELECT u.username, r.tiporoupa, r.tamanhoroupa, le.quantidade, f.nome, e.estadoencomenda, e.idencomenda, le.idlinhaencomenda, r.idroupadasencomendas, e.datadepedido, r.datadeentrega " +
                 "FROM tb_linha_encomenda le " +
                 "INNER JOIN tb_encomenda e ON e.linha_encomenda_id = le.idlinhaencomenda " +
                 "INNER JOIN tb_roupa_das_encomendas r ON r.linha_encomenda_id = le.idlinhaencomenda " +
@@ -40,7 +40,8 @@ public class EncomendaService {
 
             while (resultSet.next()) {
                 linhaEncomendaList.add(new LinhaEncomendas(resultSet.getInt(7), resultSet.getInt(8), resultSet.getInt(9), resultSet.getString(1),
-                        resultSet.getString(5), resultSet.getString(2), resultSet.getString(3), resultSet.getInt(4), resultSet.getString(6)));
+                        resultSet.getString(5), resultSet.getString(2), resultSet.getString(3), resultSet.getInt(4), resultSet.getString(6),
+                        resultSet.getString(10), resultSet.getString(11)));
             }
         } catch (SQLException e) {
             System.out.println("ERRO: " + e.getMessage());

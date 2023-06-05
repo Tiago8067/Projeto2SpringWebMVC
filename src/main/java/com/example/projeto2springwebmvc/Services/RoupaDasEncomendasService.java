@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,6 +47,27 @@ public class RoupaDasEncomendasService {
             preparedStatement.setString(1, tipoRoupa);
             preparedStatement.setString(2, tamanhoRoupa);
             preparedStatement.setInt(3, id);
+            preparedStatement.execute();
+        } catch (SQLException sqlException) {
+            System.out.println("ERRO: " + sqlException.getMessage());
+        }
+    }
+    public void atualizarRoupaDasEncomendasComData(Integer id, String tipoRoupa, String tamanhoRoupa, LocalDate dataEntrega) {
+        ConnectionUtil connectionUtil = new ConnectionUtil();
+        Connection conn = connectionUtil.criarConexao();
+
+        String sql = " UPDATE tb_roupa_das_encomendas " +
+                " SET tiporoupa = ? " +
+                " , tamanhoroupa = ? " +
+                ", datadeentrega = ? " +
+                " WHERE linha_encomenda_id = ? ";
+
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, tipoRoupa);
+            preparedStatement.setString(2, tamanhoRoupa);
+            preparedStatement.setDate(3, Date.valueOf(dataEntrega));
+            preparedStatement.setInt(4, id);
             preparedStatement.execute();
         } catch (SQLException sqlException) {
             System.out.println("ERRO: " + sqlException.getMessage());

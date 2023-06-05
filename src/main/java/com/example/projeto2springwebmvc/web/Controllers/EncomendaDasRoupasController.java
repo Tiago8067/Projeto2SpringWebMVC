@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +57,7 @@ public class EncomendaDasRoupasController {
     public String adicionarEncomenda(Encomenda encomenda, LinhaEncomenda linhaEncomenda, RoupaDasEncomendas roupaDasEncomendas) {
         linhaEncomendaService.salvarLinhaEncomenda(linhaEncomenda);
 
+        encomenda.setDataDePedido(LocalDate.now());
         encomenda.setEstadoEncomenda(EstadoEncomenda.EMPREPARACAO);
         encomenda.setLinha_encomenda(linhaEncomenda);
         String utilizadorUsernameLogadoGuardado = UtilizadorAutenticacaoController.utilizadorUsernameLogado;
@@ -107,10 +109,22 @@ public class EncomendaDasRoupasController {
         Encomenda encomendaExistente = encomendaService.getEncomendaPorId(id);
         LinhaEncomenda linhaEncomendaExistente = linhaEncomendaService.getLinhaEncomendaPorId(encomendaExistente.getLinha_encomenda().getIdLinhaEncomenda());
 
-        linhaEncomendaExistente.setQuantidade(linhaEncomenda.getQuantidade());
+        if(encomenda.getEstadoEncomenda().equals(EstadoEncomenda.FINALIZADO)){
+            encomendaExistente.setEstadoEncomenda(encomenda.getEstadoEncomenda());
+            linhaEncomendaExistente.setQuantidade(linhaEncomenda.getQuantidade());
 
-        linhaEncomendaService.salvarLinhaEncomenda(linhaEncomendaExistente);
-        roupaDasEncomendasService.atualizarRoupaDasEncomendas(encomendaExistente.getLinha_encomenda().getIdLinhaEncomenda(), String.valueOf(roupaDasEncomendas.getTipoRoupa()), String.valueOf(roupaDasEncomendas.getTamanhoRoupa()));
+            encomendaService.salvarEncomenda(encomendaExistente);
+            linhaEncomendaService.salvarLinhaEncomenda(linhaEncomendaExistente);
+            roupaDasEncomendasService.atualizarRoupaDasEncomendasComData(encomendaExistente.getLinha_encomenda().getIdLinhaEncomenda(), String.valueOf(roupaDasEncomendas.getTipoRoupa()), String.valueOf(roupaDasEncomendas.getTamanhoRoupa()), LocalDate.now());
+        }
+        else {
+            encomendaExistente.setEstadoEncomenda(encomenda.getEstadoEncomenda());
+            linhaEncomendaExistente.setQuantidade(linhaEncomenda.getQuantidade());
+
+            encomendaService.salvarEncomenda(encomendaExistente);
+            linhaEncomendaService.salvarLinhaEncomenda(linhaEncomendaExistente);
+            roupaDasEncomendasService.atualizarRoupaDasEncomendas(encomendaExistente.getLinha_encomenda().getIdLinhaEncomenda(), String.valueOf(roupaDasEncomendas.getTipoRoupa()), String.valueOf(roupaDasEncomendas.getTamanhoRoupa()));
+        }
 
         return "redirect:/encomendas";
     }

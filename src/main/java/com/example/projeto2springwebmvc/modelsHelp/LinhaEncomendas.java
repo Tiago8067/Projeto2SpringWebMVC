@@ -17,8 +17,10 @@ public class LinhaEncomendas {
     private String tamanhoRoupa;
     private Integer quantidade;
     private String estado;
+    private String dataPedido;
+    private String dataEntrega;
 
-    public LinhaEncomendas(int idEncomenda, int idLinhaEncomenda, int idRoupa, String usernameCliente, String usernameFonecedor, String tipoRoupa, String tamanhoRoupa, int quantidade, String estado) {
+    public LinhaEncomendas(int idEncomenda, int idLinhaEncomenda, int idRoupa, String usernameCliente, String usernameFonecedor, String tipoRoupa, String tamanhoRoupa, int quantidade, String estado, String dataPedido, String dataEntrega) {
         this.idEncomenda = idEncomenda;
         this.idLinhaEncomenda = idLinhaEncomenda;
         this.idRoupa = idRoupa;
@@ -28,5 +30,7 @@ public class LinhaEncomendas {
         this.tamanhoRoupa = tamanhoRoupa;
         this.quantidade = quantidade;
         this.estado = estado;
+        this.dataPedido = dataPedido;
+        this.dataEntrega = dataEntrega;
     }
 }

@@ -48,9 +48,9 @@
                                 <td th:text="${e.tipoRoupa}"></td>
                                 <td th:text="${e.tamanhoRoupa}"></td>
                                 <td th:text="${e.quantidade}"></td>
-                                <td></td>
+                                <td th:text="${e.dataPedido}"></td>
                                 <td th:text="${e.usernameFonecedor}"></td>
-                                <td></td>
+                                <td th:text="${e.dataEntrega}"></td>
                                 <td th:text="${e.estado}"></td>
                                 <td>
                                     <a class="btn btn-success" th:href="@{'/encomendas/editar/' + ${e.idEncomenda}}">
