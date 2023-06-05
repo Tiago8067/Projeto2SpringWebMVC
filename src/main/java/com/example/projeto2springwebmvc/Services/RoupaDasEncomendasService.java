@@ -52,25 +52,4 @@ public class RoupaDasEncomendasService {
             System.out.println("ERRO: " + sqlException.getMessage());
         }
     }
-    public void atualizarRoupaDasEncomendasComData(Integer id, String tipoRoupa, String tamanhoRoupa, LocalDate dataEntrega) {
-        ConnectionUtil connectionUtil = new ConnectionUtil();
-        Connection conn = connectionUtil.criarConexao();
-
-        String sql = " UPDATE tb_roupa_das_encomendas " +
-                " SET tiporoupa = ? " +
-                " , tamanhoroupa = ? " +
-                ", datadeentrega = ? " +
-                " WHERE linha_encomenda_id = ? ";
-
-        try {
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setString(1, tipoRoupa);
-            preparedStatement.setString(2, tamanhoRoupa);
-            preparedStatement.setDate(3, Date.valueOf(dataEntrega));
-            preparedStatement.setInt(4, id);
-            preparedStatement.execute();
-        } catch (SQLException sqlException) {
-            System.out.println("ERRO: " + sqlException.getMessage());
-        }
-    }
 }

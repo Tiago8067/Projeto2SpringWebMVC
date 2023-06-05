@@ -57,7 +57,6 @@ public class EncomendaDasRoupasController {
     public String adicionarEncomenda(Encomenda encomenda, LinhaEncomenda linhaEncomenda, RoupaDasEncomendas roupaDasEncomendas) {
         linhaEncomendaService.salvarLinhaEncomenda(linhaEncomenda);
 
-//        encomenda.setFornecedor(null);
         encomenda.setDataDePedido(LocalDate.now());
         encomenda.setEstadoEncomenda(EstadoEncomenda.EMPREPARACAO);
         encomenda.setLinha_encomenda(linhaEncomenda);

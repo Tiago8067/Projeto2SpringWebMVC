@@ -47,7 +47,7 @@ public class UtilizadorAutenticacaoController {
         return "registro";
     }
 
-    @PostMapping("/registrar")
+    @PostMapping("/registar")
     public String registrar(Utilizador utilizador, Localizacao localizacao) {
         localizacaoService.salvarLocalizacao(localizacao);
         utilizador.setLocalizacao(localizacao);
@@ -69,64 +69,5 @@ public class UtilizadorAutenticacaoController {
         } else {
             return "login";
         }
-    }
-
-
-    @GetMapping("/index")
-    public String utilizadores(Model model,
-                               @RequestParam(name = "page", defaultValue = "0") int page,
-                               @RequestParam(name = "size", defaultValue = "2") int size,
-                               @RequestParam(name = "keyword", defaultValue = "") String keyword
-    ) {
-        Page<Utilizador> utilizadorPage = utilizadorRepository.findByUsernameContains(keyword, PageRequest.of(page, size));
-        //Page<Utilizador> utilizadorPage = utilizadorRepository.findAll(PageRequest.of(page, size));
-        //List<Utilizador> utilizadors = utilizadorRepository.findAll();
-        model.addAttribute("listUtilizadores", utilizadorPage.getContent());
-        model.addAttribute("pages", new int[utilizadorPage.getTotalPages()]);
-        model.addAttribute("currentPage", page);
-        model.addAttribute("keyword", keyword);
-        return "utilizadores";
-    }
-
-    @GetMapping("/delete")
-    public String delete(Integer id, String keyword, int page) {
-        utilizadorRepository.deleteById(id);
-        return "redirect:/index?page=" + page + "&keyword=" + keyword;
-    }
-
-    @GetMapping("/")
-    public String home() {
-        return "redirect:/index";
-    }
-
-    @GetMapping("/users")
-    @ResponseBody
-    public List<Utilizador> utilizadorList() {
-        return utilizadorRepository.findAll();
-    }
-
-    @GetMapping("/formUtilizadors")
-    public String formUtilizadors(Model model) {
-        model.addAttribute("utilizador", new Utilizador());
-        return "formUtilizadors";
-    }
-
-    @PostMapping(path = "/save")
-    public String save(@Valid Utilizador utilizador, BindingResult bindingResult,
-                       @RequestParam(defaultValue = "0") int page,
-                       @RequestParam(defaultValue = "") String keyword) {
-        if (bindingResult.hasErrors()) return "formUtilizadors";
-        utilizadorRepository.save(utilizador);
-        return "redirect:/index?page=" + page + "&keyword=" + keyword;
-    }
-
-    @GetMapping("/editUtilizador")
-    public String editUtilizador(Model model, Integer id, String keyword, int page) {
-        Utilizador utilizador = utilizadorRepository.findById(id).orElse(null);
-        if (utilizador == null) throw new RuntimeException("Utilizador Necessario");
-        model.addAttribute("utilizador", utilizador);
-        model.addAttribute("page", page);
-        model.addAttribute("keyword", keyword);
-        return "editUtilizador";
     }
 }

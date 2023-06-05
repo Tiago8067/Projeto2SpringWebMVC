@@ -30,7 +30,7 @@ public class RoupaService {
         ConnectionUtil connectionUtil = new ConnectionUtil();
         Connection conn = connectionUtil.criarConexao();
 
-        //TODO -> Verificar a situacao do sotck
+        //TODO -> Verificar a situacao do stock
 
         /*String sql = " SELECT DISTINCT categoriaroupa, imagesrc, tiporoupa, tamanhoroupa, stock FROM tb_roupa; ";*/
         String sql = " SELECT DISTINCT categoriaroupa, imagesrc, tiporoupa, tamanhoroupa FROM tb_roupa; ";
