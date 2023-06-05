@@ -35,15 +35,8 @@
                 </div>
                 <div class="form-floating col-3 mb-3" th:object="${linhaEncomenda}">
                     <input type="number" class="form-control" id="nPorta" placeholder="Enter with your Número de Porta"
-                           th:field="*{quantidade}">
+                           th:field="*{quantidade}" required>
                     <label for="nPorta">Quantidade</label>
-                </div>
-                <div class="form-group col-6 mb-3" th:object="${encomenda}">
-                    <label for="estado">Estado :</label>
-                    <select class="form-control" name="estado" id="estado" th:field="*{estadoEncomenda}">
-                        <option th:each="estado : ${T(com.example.projeto2springwebmvc.models.enums.EstadoEncomenda).values()}"
-                                th:value="${estado}" th:text="${estado}"></option>
-                    </select>
                 </div>
                 <div class="form-floating mt-4 text-center">
                     <button class="btn btn-primary m-2" type="submit">Adicionar</button>

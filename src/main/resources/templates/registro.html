@@ -51,17 +51,17 @@
             </div>-->
             <div class="form-floating col-4 mb-3">
                 <input type="number" class="form-control" id="nif" placeholder="Enter with your NIF"
-                       th:field="*{nif}" required>
+                       th:field="*{nif}" minlength="9" required>
                 <label for="nif">NIF</label>
             </div>
             <div class="form-floating col-4 mb-3">
                 <input type="number" class="form-control" id="NCC" placeholder="Enter with your NCC"
-                       th:field="*{numeroCc}" required>
+                       th:field="*{numeroCc}" minlength="9" required>
                 <label for="NCC">NCC</label>
             </div>
             <div class="form-floating col-4 mb-3">
                 <input type="number" class="form-control" id="contacto" placeholder="Enter with your Contacto"
-                       th:field="*{contacto}" required>
+                       th:field="*{contacto}" minlength="9" required>
                 <label for="contacto">Contacto</label>
             </div>
             <div th:object="${localizacao}">
@@ -81,8 +81,8 @@
                     <label for="cidade">Cidade</label>
                 </div>
                 <div class="form-floating col-4 mb-3">
-                    <input type="text" class="form-control" id="codPostal" placeholder="Enter with your Código Postal"
-                           th:field="*{codigoPostal}" required>
+                    <input type="text" class="form-control" id="codPostal" pattern="[0-9]{4}-[0-9]{3}" placeholder="Enter with your Código Postal"
+                           th:field="*{codigoPostal}" required maxlength="8">
                     <label for="codPostal">Código Postal</label>
                 </div>
                 <div class="form-floating col-2 mb-3">
@@ -92,7 +92,7 @@
                 </div>
             </div>
             <div class="form-floating mt-4 text-center">
-                <button class="btn btn-primary" type="submit">Registrar</button>
+                <button class="btn btn-primary" type="submit">Registar</button>
             </div>
             <div class="form-floating mt-3 text-center">
                 <a class="link-primary" th:href="@{/login}" style="text-decoration: none">Já estou registado! Realizar
