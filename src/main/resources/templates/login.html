@@ -2,16 +2,21 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Login Page</title>
     <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url(/images/clothes.png);
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
-
 <div class="container min-vh-100 d-flex justify-content-center align-items-center">
     <form method="post" th:action="@{/entrar}" th:object="${loginResquest}">
-        <div class="row border-bottom border-danger rounded-5 p-3 bg-white shadow box-area">
+        <div class="row border border-danger rounded-5 p-3 bg-white shadow box-area">
             <div class="text-center featured-image mb-3">
-                <img src="../images/logo.png" class="img-fluid" alt="logo" style="width: 50px; height: 100px;">
+                <img src="/images/logo.png" alt="Logo" class="img-thumbnail img-fluid"/>
             </div>
             <div class="form-floating mb-3">
                 <input type="text" name="username" class="form-control" id="username"
@@ -27,12 +32,12 @@
                 <button class="btn btn-primary" type="submit">Entrar</button>
             </div>
             <div class="form-floating mt-3 text-center">
-                <a class="link-primary" th:href="@{/novo}" style="text-decoration: none">Ainda não registado? Registe-se
+                <a class="link-primary" th:href="@{/novo}" style="text-decoration: none">Ainda não registado?
+                    Registe-se!
                     Aqui</a>
             </div>
         </div>
     </form>
 </div>
-
 </body>
 </html>
