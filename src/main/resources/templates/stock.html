@@ -18,7 +18,7 @@
             <div th:each="r : ${listaRoupas}">
                 <div class="col">
                     <div class="card h-100">
-                        <img th:src="${r.imageSrc}" class="card-img-top" alt="Imagem Associada à Roupa">
+                        <img th:src="${r.imageSrc}" class="card-img-top" alt="Imagem Associada à Roupa" width="100" height="250">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${r.tipoRoupa}"></h5>
                             <h6 class="card-subtitle mb-2 text-muted" th:text="${r.categoriaRoupa}"></h6>
