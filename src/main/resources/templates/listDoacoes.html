@@ -45,7 +45,7 @@
                                 <td th:text="${d.tipoRoupa}"></td>
                                 <td th:text="${d.tamanhoRoupa}"></td>
                                 <td th:text="${d.quantidade}"></td>
-                                <td></td>
+                                <td th:text="${d.dataDoacao}"></td>
                                 <td>
                                     <a class="btn btn-success" th:href="@{'/doacoes/editar/' + ${d.idDoacao}}">
                                         Editar

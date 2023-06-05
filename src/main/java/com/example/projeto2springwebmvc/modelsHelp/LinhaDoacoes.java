@@ -13,12 +13,14 @@ public class LinhaDoacoes {
     private String tipoRoupa;
     private String tamanhoRoupa;
     private Integer quantidade;
+    private String dataDoacao;
 
-    public LinhaDoacoes(int idDoacao, String username, String tipoRoupa, String tamanhoRoupa, int quantidade) {
+    public LinhaDoacoes(int idDoacao, String username, String tipoRoupa, String tamanhoRoupa, int quantidade, String dataDoacao) {
         this.idDoacao = idDoacao;
         this.username = username;
         this.tipoRoupa = tipoRoupa;
         this.tamanhoRoupa = tamanhoRoupa;
         this.quantidade = quantidade;
+        this.dataDoacao = dataDoacao;
     }
 }

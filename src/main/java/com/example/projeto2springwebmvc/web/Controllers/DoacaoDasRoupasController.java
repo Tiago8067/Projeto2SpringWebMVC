@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,6 +72,7 @@ public class DoacaoDasRoupasController {
         String utilizadorUsernameLogadoGuardado = UtilizadorAutenticacaoController.utilizadorUsernameLogado;
         Utilizador utilizadorLogadoGuardado = utilizadorService.retornaUtilizadorLogado(utilizadorUsernameLogadoGuardado);
         doacao.setUtilizador(utilizadorLogadoGuardado);
+        doacao.setDataDaDoacao(LocalDate.now());
 
         TipoRoupa tipoRoupa = roupa.getTipoRoupa();
         CategoriaRoupa categoriaRoupa = helpAddDoacoes.adicionarAssociarCategoria(tipoRoupa);
@@ -119,8 +121,10 @@ public class DoacaoDasRoupasController {
         Doacao doacaoExistente = doacaoService.getDoacaoPorId(id);
         Roupa_Doacao roupaDoacaoExistente = roupaDoacaoService.getRoupa_DoacaoPoId(doacaoExistente.getRoupa_doacao().getId_roupa_doacao());
 
+        doacaoExistente.setDataDaDoacao(LocalDate.now());
         roupaDoacaoExistente.setQuantidade(roupa_doacao.getQuantidade());
 
+        doacaoService.salvarDoacao(doacaoExistente);
         roupaDoacaoService.salvarRoupa_Doacao(roupaDoacaoExistente);
         roupaService.atualizarRoupa(doacaoExistente.getRoupa_doacao().getId_roupa_doacao(), String.valueOf(roupa.getTipoRoupa()), String.valueOf(roupa.getTamanhoRoupa()));
 
