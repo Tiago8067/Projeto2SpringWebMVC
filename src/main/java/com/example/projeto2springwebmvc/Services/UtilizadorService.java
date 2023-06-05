@@ -61,6 +61,7 @@ public class UtilizadorService {
 
         } catch (SQLException sqlException) {
             System.out.println("ERRO: " + sqlException.getMessage());
+            System.out.println("TENTATIVA");
         }
     }
 }
