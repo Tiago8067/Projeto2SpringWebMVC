@@ -9,8 +9,10 @@ import com.example.projeto2springwebmvc.models.Roupa;
 import com.example.projeto2springwebmvc.models.Roupa_Doacao;
 import com.example.projeto2springwebmvc.models.Utilizador;
 import com.example.projeto2springwebmvc.models.enums.CategoriaRoupa;
+import com.example.projeto2springwebmvc.models.enums.TamanhoRoupa;
 import com.example.projeto2springwebmvc.models.enums.TipoRoupa;
 import com.example.projeto2springwebmvc.modelsHelp.LinhaDoacoes;
+import com.example.projeto2springwebmvc.modelsHelp.LinhaRoupa;
 import com.example.projeto2springwebmvc.util.HelpAddDoacoes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -75,6 +77,7 @@ public class DoacaoDasRoupasController {
         doacao.setDataDaDoacao(LocalDate.now());
 
         TipoRoupa tipoRoupa = roupa.getTipoRoupa();
+        TamanhoRoupa tamanhoRoupa = roupa.getTamanhoRoupa();
         CategoriaRoupa categoriaRoupa = helpAddDoacoes.adicionarAssociarCategoria(tipoRoupa);
         roupa.setCategoriaRoupa(categoriaRoupa);
         String imgSrc = helpAddDoacoes.adicionarAssociarImagem(tipoRoupa);
@@ -83,6 +86,19 @@ public class DoacaoDasRoupasController {
 
         doacaoService.salvarDoacao(doacao);
         roupaService.salvarRoupa(roupa);
+
+        int soma = 0;
+        for (LinhaRoupa linhaRoupa : roupaService.buscarDadosParaStock()) {
+            if (linhaRoupa.getTipoRoupa().equals(String.valueOf(tipoRoupa)) && linhaRoupa.getTamanhoRoupa().equals(String.valueOf(tamanhoRoupa))) {
+                soma = soma + linhaRoupa.getQuantidade();
+            }
+        }
+
+        for (Roupa r : roupaService.buscarTodas()) {
+            if (r.getTipoRoupa().equals(tipoRoupa) && r.getTamanhoRoupa().equals(tamanhoRoupa)) {
+                roupaService.atualizarRoupaStock(r, soma);
+            }
+        }
 
         return "redirect:/doacoes";
     }
@@ -127,6 +143,21 @@ public class DoacaoDasRoupasController {
         doacaoService.salvarDoacao(doacaoExistente);
         roupaDoacaoService.salvarRoupa_Doacao(roupaDoacaoExistente);
         roupaService.atualizarRoupa(doacaoExistente.getRoupa_doacao().getId_roupa_doacao(), String.valueOf(roupa.getTipoRoupa()), String.valueOf(roupa.getTamanhoRoupa()));
+
+        TipoRoupa tipoRoupa = roupa.getTipoRoupa();
+        TamanhoRoupa tamanhoRoupa = roupa.getTamanhoRoupa();
+        int soma = 0;
+        for (LinhaRoupa linhaRoupa : roupaService.buscarDadosParaStock()) {
+            if (linhaRoupa.getTipoRoupa().equals(String.valueOf(tipoRoupa)) && linhaRoupa.getTamanhoRoupa().equals(String.valueOf(tamanhoRoupa))) {
+                soma = soma + linhaRoupa.getQuantidade();
+            }
+        }
+
+        for (Roupa r : roupaService.buscarTodas()) {
+            if (r.getTipoRoupa().equals(tipoRoupa) && r.getTamanhoRoupa().equals(tamanhoRoupa)) {
+                roupaService.atualizarRoupaStock(r, soma);
+            }
+        }
 
         return "redirect:/doacoes";
     }

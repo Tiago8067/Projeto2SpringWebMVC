@@ -25,11 +25,6 @@
                         </h5>
                     </div>
                     <div class="card-body">
-                        <form method="get" th:action="@{doacoes}">
-                            <label for="keyword">Key word</label>
-                            <input id="keyword" type="text" name="keyword" th:value="${keyword}">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
                         <table class="table">
                             <thead>
                             <tr>
@@ -54,14 +49,6 @@
                             </tr>
                             </tbody>
                         </table>
-                        <ul class="nav nav-pills">
-                            <li th:each="page,status:${pages}">
-                                <a th:class="${status.index==currentPage?'btn btn-primary ms-1' : 'btn btn-outline-primary ms-1'}"
-                                   th:text="${status.index}"
-                                   th:href="@{doacoes(page=${status.index}, keyword=${keyword})}"
-                                ></a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
