@@ -44,48 +44,38 @@
                        th:field="*{nome}" required>
                 <label for="nome">Nome</label>
             </div>
-            <!--<div class="form-floating col-4 mb-3">
-                <input type="date" class="form-control" id="dataNascimento" placeholder="Enter with your Data de Nascimento"
-                       th:field="*{dataNascimento}" required>
-                <label for="dataNascimento">Data de Nascimento</label>
-            </div>-->
-            <div class="form-floating col-4 mb-3">
-                <input type="number" class="form-control" id="nif" placeholder="Enter with your NIF"
-                       th:field="*{nif}" minlength="9" required>
-                <label for="nif">NIF</label>
-            </div>
-            <div class="form-floating col-4 mb-3">
-                <input type="number" class="form-control" id="NCC" placeholder="Enter with your NCC"
-                       th:field="*{numeroCc}" minlength="9" required>
-                <label for="NCC">NCC</label>
-            </div>
             <div class="form-floating col-4 mb-3">
                 <input type="number" class="form-control" id="contacto" placeholder="Enter with your Contacto"
                        th:field="*{contacto}" minlength="9" required>
                 <label for="contacto">Contacto</label>
             </div>
-            <div th:object="${localizacao}">
-                <div class="form-floating col-4 mb-3">
-                    <input type="text" class="form-control" id="localidade" placeholder="Enter with your Localidade"
-                           th:field="*{localidade}" required>
-                    <label for="localidade">Localidade</label>
-                </div>
-                <div class="form-floating col-8 mb-3">
-                    <input type="text" class="form-control" id="rua" placeholder="Enter with your Rua"
-                           th:field="*{rua}" required>
-                    <label for="rua">Rua</label>
-                </div>
-                <div class="form-floating col-6 mb-3">
-                    <input type="text" class="form-control" id="cidade" placeholder="Enter with your Cidade"
-                           th:field="*{cidade}" required>
-                    <label for="cidade">Cidade</label>
-                </div>
+            <div class="form-floating col-6 mb-3">
+                <input type="number" class="form-control" id="nif" placeholder="Enter with your NIF"
+                       th:field="*{nif}" minlength="9" required>
+                <label for="nif">NIF</label>
+            </div>
+            <div class="form-floating col-6 mb-3">
+                <input type="number" class="form-control" id="NCC" placeholder="Enter with your NCC"
+                       th:field="*{numeroCc}" minlength="9" required>
+                <label for="NCC">NCC</label>
+            </div>
+            <div th:object="${localizacao}" class="row">
                 <div class="form-floating col-4 mb-3">
                     <input type="text" class="form-control" id="codPostal" pattern="[0-9]{4}-[0-9]{3}" placeholder="Enter with your Código Postal"
                            th:field="*{codigoPostal}" required maxlength="8">
                     <label for="codPostal">Código Postal</label>
                 </div>
-                <div class="form-floating col-2 mb-3">
+                <div class="form-floating col-8 mb-3">
+                    <input type="text" class="form-control" id="localidade" placeholder="Enter with your Localidade"
+                           th:field="*{localidade}" required>
+                    <label for="localidade">Localidade</label>
+                </div>
+                <div class="form-floating col-8 mb-3">
+                    <input type="text" class="form-control" id="rua" placeholder="Enter with your Morada"
+                           th:field="*{rua}" required>
+                    <label for="rua">Morada</label>
+                </div>
+                <div class="form-floating col-4 mb-3">
                     <input type="number" class="form-control" id="nPorta" placeholder="Enter with your Número de Porta"
                            th:field="*{numeroPorta}" required>
                     <label for="nPorta">Número de Porta</label>

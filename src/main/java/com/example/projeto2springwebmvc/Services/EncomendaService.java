@@ -29,7 +29,8 @@ public class EncomendaService {
                 "INNER JOIN tb_encomenda e ON e.linha_encomenda_id = le.idlinhaencomenda " +
                 "INNER JOIN tb_roupa_das_encomendas r ON r.linha_encomenda_id = le.idlinhaencomenda " +
                 "INNER JOIN tb_fornecedor f ON f.idfornecedor = e.fornecedor_id " +
-                "INNER JOIN tb_utilizador u ON u.idutilizador = e.utilizador_id ";
+                "INNER JOIN tb_utilizador u ON u.idutilizador = e.utilizador_id " +
+                "ORDER BY e.datadepedido DESC ";
 
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;

@@ -28,7 +28,8 @@ public class DoacaoService {
                 "FROM tb_roupa_doacao rd " +
                 "INNER JOIN tb_doacao d ON d.roupa_doacao_id = rd.id_roupa_doacao " +
                 "INNER JOIN tb_roupa r ON r.roupa_doacao_id = rd.id_roupa_doacao " +
-                "INNER JOIN tb_utilizador u ON u.idutilizador = d.utilizador_id ";
+                "INNER JOIN tb_utilizador u ON u.idutilizador = d.utilizador_id " +
+                "ORDER BY d.datadadoacao DESC ";
 
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
