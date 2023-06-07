@@ -41,9 +41,6 @@ public class Utilizador implements Serializable {
     @Column(name = "nome")
     private String nome;
 
-    // TODO => Acrescentar data no registo
-    /*@DateTimeFormat(pattern = "yyyy-MM-dd")*/
-
     @Column(name = "datanascimento")
     private String dataNascimento;
     @Column(name = "contacto")

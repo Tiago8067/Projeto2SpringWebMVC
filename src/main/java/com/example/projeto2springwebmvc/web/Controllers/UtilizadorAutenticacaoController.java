@@ -7,25 +7,19 @@ import com.example.projeto2springwebmvc.models.Utilizador;
 import com.example.projeto2springwebmvc.models.enums.EstadoUtilizador;
 import com.example.projeto2springwebmvc.models.enums.TipoUtilizador;
 import com.example.projeto2springwebmvc.repositories.UtilizadorRepository;
-import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @Controller
 @NoArgsConstructor
 @AllArgsConstructor
 public class UtilizadorAutenticacaoController {
-    private UtilizadorRepository utilizadorRepository;
     @Autowired
     private UtilizadorService utilizadorService;
     @Autowired
@@ -61,9 +55,7 @@ public class UtilizadorAutenticacaoController {
         Optional<Utilizador> autenticado = utilizadorService.verificaDadosLogin(utilizador.getUsername(), utilizador.getPassword());
 
         if (autenticado.isPresent() && autenticado.get().getTipoUtilizador().equals(TipoUtilizador.CLIENTE) && autenticado.get().getEstadoUtilizador().equals(EstadoUtilizador.ATIVO)) {
-
             utilizadorUsernameLogado = autenticado.get().getUsername();
-            // todo -> mandar username do user logado para o dropdopwn
 
             return "redirect:/homePage";
         } else {
