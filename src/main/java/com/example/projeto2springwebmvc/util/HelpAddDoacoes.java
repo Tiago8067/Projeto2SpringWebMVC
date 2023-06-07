@@ -17,7 +17,7 @@ public class HelpAddDoacoes {
         }
     }
 
-    public String adicionarAssociarImagem(TipoRoupa tipoRoupa) {
+    /*public String adicionarAssociarImagem(TipoRoupa tipoRoupa) {
         return switch (tipoRoupa) {
             case CALCAS -> "/images/calcas.jpg";
             case CALCOES -> "/images/calcoes.jpg";
@@ -31,6 +31,22 @@ public class HelpAddDoacoes {
             case COLETE -> "/images/colete.jpg";
             case MEIACALCA -> "/images/meia_calca.jpg";
             case MEIAS -> "/images/meias.jpg";
+        };
+    }*/
+    public String adicionarAssociarImagem(TipoRoupa tipoRoupa) {
+        return switch (tipoRoupa) {
+            case CALCAS -> "/images/images2/calcas.gif";
+            case CALCOES -> "/images/images2/calcoes.gif";
+            case VESTIDO -> "/images/images2/vestido.gif";
+            case SAIA -> "/images/images2/saia2.jfif";
+            case BLUSA -> "/images/images2/blusa.gif";
+            case SWEAT -> "/images/images2/sweat.gif";
+            case T_SHIRT -> "/images/images2/t-shirt.gif";
+            case CAMISA -> "/images/images2/camisa.png";
+            case CASACO -> "/images/images2/casaco.gif";
+            case COLETE -> "/images/images2/colete.gif";
+            case MEIACALCA -> "/images/images2/meia-calca.gif";
+            case MEIAS -> "/images/images2/meias.gif";
         };
     }
 }
