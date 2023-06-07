@@ -6,7 +6,6 @@ import com.example.projeto2springwebmvc.models.Localizacao;
 import com.example.projeto2springwebmvc.models.Utilizador;
 import com.example.projeto2springwebmvc.models.enums.EstadoUtilizador;
 import com.example.projeto2springwebmvc.models.enums.TipoUtilizador;
-import com.example.projeto2springwebmvc.repositories.UtilizadorRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

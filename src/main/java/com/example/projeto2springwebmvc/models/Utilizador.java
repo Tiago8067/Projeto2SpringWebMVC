@@ -10,7 +10,6 @@ import com.example.projeto2springwebmvc.models.enums.TipoUtilizador;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.List;
 
 @Data
@@ -28,8 +27,6 @@ public class Utilizador implements Serializable {
     // Validacoes com spring boot
     @NotEmpty
     @Size(min = 4, max = 40)
-    /*@UniqueElements*/
-    /*@DecimalMin("100")*/
     @Column(name = "username")
     private String username;
     @Column(name = "password")
@@ -58,7 +55,7 @@ public class Utilizador implements Serializable {
     @JsonIgnore
     private Localizacao localizacao;
 
-    @OneToMany(mappedBy = "utilizador")//Faz ser bidirecional
+    @OneToMany(mappedBy = "utilizador")
     @JsonIgnore
     private List<Doacao> doacoes;
 
